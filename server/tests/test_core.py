@@ -1,0 +1,126 @@
+import json
+
+import pytest
+
+from floorhand import config
+from floorhand.bot import Bot
+from floorhand.catalog import Catalog, Product
+from floorhand.drafts import guard, template_drafts
+from floorhand.store import Store
+
+FRIDGE = Product(code="200413", name="Холодильник BOSCH KGN39VLEB", name_en="Bosch KGN39VLEB fridge",
+                 price_uah=24999, stock_status="In stock", url="https://tt.ua/uk/bosch-kgn39vleb",
+                 specs=["No Frost", "203 cm"])
+MIXER = Product(code="111111", name="Планетарний міксер ZELMER ZKR 1355", name_en="Zelmer ZKR 1355 stand mixer",
+                price_uah=7123, stock_status="Out of stock, can be ordered", url="https://tt.ua/uk/mikser-zelmer-zkr-1355")
+
+
+def cat():
+    return Catalog([FRIDGE, MIXER])
+
+
+def test_match_by_code_link_and_words():
+    c = cat()
+    assert c.match("Код 200413 чи є?")[0] is FRIDGE
+    assert c.match("https://tt.ua/uk/mikser-zelmer-zkr-1355 is it available?")[0] is MIXER
+    assert c.match("do you have the zelmer mixer?")[0] is MIXER
+    assert c.match("hello")[0] is None
+
+
+def test_guard_flags_wrong_price_and_missing_product():
+    ok = guard([{"text": "It costs 24 999 UAH and is in stock.", "confident": True}], FRIDGE)
+    assert ok[0]["confident"] is True
+    bad = guard([{"text": "It costs 19 999 UAH today.", "confident": True}], FRIDGE)
+    assert bad[0]["confident"] is False
+    none = guard([{"text": "Yes we have it.", "confident": True}], None)
+    assert none[0]["confident"] is False
+
+
+def test_template_drafts_use_catalog_only():
+    d = template_drafts("is the fridge in stock?", FRIDGE)
+    assert len(d) == 3 and "24 999 UAH" in d[0]["text"] and d[0]["confident"]
+    assert all(not x["confident"] for x in template_drafts("hi", None))
+
+
+class FakeBot(Bot):
+    def __init__(self, store, catalog):
+        super().__init__(store, catalog, token="test")
+        self.sent = []
+
+    def call(self, method, **params):
+        self.sent.append((method, params))
+        return {}
+
+    def new_question(self, chat_id, name, text):
+        t = self.store.add_ticket(chat_id, name, text)
+        self.draft(t["id"])
+
+
+def msg(chat_id, text):
+    return {"message": {"chat": {"id": chat_id}, "from": {"first_name": "Anna"}, "text": text}}
+
+
+def test_consent_then_question_then_reply(tmp_path, monkeypatch):
+    monkeypatch.setattr(config, "DRAFTS", "template")
+    s = Store(tmp_path)
+    b = FakeBot(s, cat())
+    b.handle_update(msg(42, "Код 200413 is it in stock?"))
+    assert s.customer(42)["pending"] and not s.waiting()           # asked consent first, no ticket yet
+    b.handle_update({"callback_query": {"id": "q", "data": "consent:human", "message": {"chat": {"id": 42}},
+                                        "from": {"first_name": "Anna"}}})
+    t = s.waiting()[0]
+    assert t["status"] == "waiting" and t["draft_mode"] == "template" and t["product"] == "200413"
+    b.reply(t["id"], t["drafts"][0]["text"])
+    assert s.ticket(t["id"])["status"] == "sent"
+    assert b.sent[-1][1]["chat_id"] == 42
+
+
+def test_forget_deletes_customer_and_tickets(tmp_path, monkeypatch):
+    monkeypatch.setattr(config, "DRAFTS", "template")
+    s = Store(tmp_path)
+    b = FakeBot(s, cat())
+    s.set_customer(7, consent="ai")
+    b.handle_update(msg(7, "zelmer mixer price?"))
+    b.handle_update(msg(7, "/forget"))
+    assert s.customer(7) == {} and not s.waiting()
+    assert json.loads((tmp_path / "state.json").read_text())["tickets"] == []
+
+
+def test_pairing_and_isolation(tmp_path, monkeypatch):
+    from fastapi.testclient import TestClient
+    import floorhand.api as api
+    monkeypatch.setattr(config, "DRAFTS", "template")
+    s = Store(tmp_path)
+    b = FakeBot(s, cat())
+    monkeypatch.setattr(api, "store", s)
+    monkeypatch.setattr(api, "bot", b)
+    monkeypatch.setattr(api, "catalog", b.catalog)
+    client = TestClient(api.app)
+    code = client.get("/api/card", params={"uid": "g2"}).json()["code"]
+    b.handle_update(msg(1, f"/pair {code}"))
+    for chat in (1, 2):
+        s.set_customer(chat, consent="human")
+        b.handle_update(msg(chat, "Код 200413 in stock?"))
+    card = client.get("/api/card", params={"uid": "g2"}).json()
+    assert card["mode"] == "card" and card["queue"] == 1           # sees only own question
+    tid = card["ticket"]["id"]
+    r = client.post("/api/send", json={"uid": "g2", "ticket_id": tid, "draft": 0})
+    assert r.status_code == 200
+    assert client.get("/api/card", params={"uid": "g2"}).json()["mode"] == "empty"
+
+
+def test_low_confidence_cannot_be_sent(tmp_path, monkeypatch):
+    from fastapi.testclient import TestClient
+    import floorhand.api as api
+    monkeypatch.setattr(config, "DRAFTS", "template")
+    monkeypatch.setattr(config, "DEMO_ISOLATION", False)
+    s = Store(tmp_path)
+    b = FakeBot(s, cat())
+    monkeypatch.setattr(api, "store", s)
+    monkeypatch.setattr(api, "bot", b)
+    client = TestClient(api.app)
+    s.state["devices"]["g2"] = {"owner_chat_id": 99, "paired_at": 0}
+    s.set_customer(5, consent="human")
+    b.handle_update(msg(5, "do you sell lawn mowers?"))
+    tid = client.get("/api/card", params={"uid": "g2"}).json()["ticket"]["id"]
+    assert client.post("/api/send", json={"uid": "g2", "ticket_id": tid, "draft": 0}).status_code == 409
