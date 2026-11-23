@@ -8,6 +8,18 @@ from pathlib import Path
 _LOCK = threading.RLock()
 
 
+def _network(ip: str) -> str:
+    """IPv4 as is, IPv6 grouped by /64 (one home or one VPS usually owns a /64)."""
+    import ipaddress
+    try:
+        addr = ipaddress.ip_address(ip)
+    except ValueError:
+        return ip
+    if addr.version == 6:
+        return str(ipaddress.ip_network(f"{ip}/64", strict=False))
+    return ip
+
+
 class Store:
     def __init__(self, data_dir: Path):
         self.path = Path(data_dir) / "state.json"
@@ -92,17 +104,25 @@ class Store:
             for code, v in codes.items():
                 if v["device"] == device:
                     return code
-            # one address cannot fill the table, and a full table refuses new
-            # codes rather than evicting codes other people are about to type
-            if sum(1 for v in codes.values() if v.get("ip") == ip) >= self.NEW_DEVICES_PER_IP:
+            # One address (an IPv6 /64 counts as one) holds at most
+            # NEW_DEVICES_PER_IP pending codes. When the table is full, the
+            # oldest code of the address holding the most codes goes, so a
+            # flood from a few addresses only pushes out its own codes.
+            net = _network(ip)
+            if sum(1 for v in codes.values() if v.get("net") == net) >= self.NEW_DEVICES_PER_IP:
                 raise Store.PairingBusy("too many new devices from this address")
-            if len(codes) >= self.MAX_CODES:
-                raise Store.PairingBusy("pairing is busy, try again in a few minutes")
+            while len(codes) >= self.MAX_CODES:
+                counts: dict[str, int] = {}
+                for v in codes.values():
+                    counts[v.get("net", "")] = counts.get(v.get("net", ""), 0) + 1
+                heavy = max(counts, key=counts.get)
+                oldest = min((c for c, v in codes.items() if v.get("net", "") == heavy), key=lambda c: codes[c]["at"])
+                codes.pop(oldest)
             while True:
                 code = f"{secrets.randbelow(900000) + 100000}"
                 if code not in codes:
                     break
-            codes[code] = {"device": device, "at": now, "ip": ip}
+            codes[code] = {"device": device, "at": now, "net": net}
             self._save()
             return code
 

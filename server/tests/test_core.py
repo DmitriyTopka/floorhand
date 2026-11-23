@@ -145,15 +145,14 @@ def test_short_or_guessable_device_key_rejected():
     assert TestClient(api.app).get("/api/card", headers={"X-Device-Key": "g2-123"}).status_code == 400
 
 
-def test_pair_codes_limited_per_address_and_never_evicted(tmp_path):
+def test_pair_codes_flood_only_evicts_the_flooder(tmp_path):
     s = Store(tmp_path)
-    s.NEW_DEVICES_PER_IP, s.MAX_CODES = 2, 3
-    keys = [f"device-key-number-{i:04d}-abcdef" for i in range(4)]
-    first = s.pair_code_for(keys[0], "1.1.1.1")
-    s.pair_code_for(keys[1], "1.1.1.1")
+    s.NEW_DEVICES_PER_IP, s.MAX_CODES = 3, 4
+    keys = [f"device-key-number-{i:04d}-abcdef" for i in range(8)]
+    victim = s.pair_code_for(keys[0], "9.9.9.9")
+    for i in range(1, 4):                            # attacker fills its quota from one IPv6 /64
+        s.pair_code_for(keys[i], f"2001:db8::{i}")
     with pytest.raises(Store.PairingBusy):
-        s.pair_code_for(keys[2], "1.1.1.1")        # same address, over its limit
-    s.pair_code_for(keys[2], "2.2.2.2")
-    with pytest.raises(Store.PairingBusy):
-        s.pair_code_for(keys[3], "3.3.3.3")        # table full: refuse, don't evict
-    assert s.confirm_pair(first, 1) == keys[0]
+        s.pair_code_for(keys[4], "2001:db8::99")     # same /64, over its limit
+    s.pair_code_for(keys[5], "8.8.8.8")              # table full: attacker's oldest code goes
+    assert s.confirm_pair(victim, 1) == keys[0]      # the honest code survived
