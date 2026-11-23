@@ -1,0 +1,18 @@
+{
+  "package_id": "com.floorhand.glasses",
+  "edition": "202601",
+  "name": "Floorhand",
+  "version": "0.1.0",
+  "min_app_version": "2.0.0",
+  "min_sdk_version": "0.0.16",
+  "entrypoint": "index.html",
+  "permissions": [
+    {
+      "name": "g2-microphone",
+      "desc": "Short voice edits of a reply draft, sent to the shop's own server for transcription."
+    }
+  ],
+  "supported_languages": [
+    "en"
+  ]
+}
