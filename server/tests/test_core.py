@@ -156,3 +156,13 @@ def test_pair_codes_flood_only_evicts_the_flooder(tmp_path):
         s.pair_code_for(keys[4], "2001:db8::99")     # same /64, over its limit
     s.pair_code_for(keys[5], "8.8.8.8")              # table full: attacker's oldest code goes
     assert s.confirm_pair(victim, 1) == keys[0]      # the honest code survived
+
+
+def test_evicted_code_number_is_never_reissued(tmp_path):
+    s = Store(tmp_path)
+    s.NEW_DEVICES_PER_IP, s.MAX_CODES = 5, 2
+    a = s.pair_code_for("device-key-number-aaaa-abcdef", "1.1.1.1")
+    s.pair_code_for("device-key-number-bbbb-abcdef", "1.1.1.1")
+    s.pair_code_for("device-key-number-cccc-abcdef", "2.2.2.2")   # evicts a
+    assert a in s.state["retired_codes"]
+    assert s.confirm_pair(a, 1) is None                              # old number pairs nothing

@@ -101,6 +101,11 @@ class Store:
             codes = self.state["pair_codes"]
             for code in [c for c, v in codes.items() if now - v["at"] > self.CODE_TTL]:
                 codes.pop(code)
+            # numbers of evicted codes stay retired until their TTL runs out, so a
+            # code someone is about to type can never point to another device
+            retired = self.state.setdefault("retired_codes", {})
+            for code in [c for c, at in retired.items() if now - at > self.CODE_TTL]:
+                retired.pop(code)
             for code, v in codes.items():
                 if v["device"] == device:
                     return code
@@ -117,10 +122,10 @@ class Store:
                     counts[v.get("net", "")] = counts.get(v.get("net", ""), 0) + 1
                 heavy = max(counts, key=counts.get)
                 oldest = min((c for c, v in codes.items() if v.get("net", "") == heavy), key=lambda c: codes[c]["at"])
-                codes.pop(oldest)
+                retired[oldest] = codes.pop(oldest)["at"]
             while True:
                 code = f"{secrets.randbelow(900000) + 100000}"
-                if code not in codes:
+                if code not in codes and code not in retired:
                     break
             codes[code] = {"device": device, "at": now, "net": net}
             self._save()
