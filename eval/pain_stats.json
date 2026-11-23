@@ -1,0 +1,69 @@
+{
+ "window": "13.11.2026 00:00 - 21.11.2026 00:00 Europe/Kyiv (UTC+2)",
+ "dialog_days": 267,
+ "dialog_days_escalated": 99,
+ "unique_dialogs": 211,
+ "unique_dialogs_escalated": 71,
+ "unique_dialogs_with_any_manager_msg": 171,
+ "escalation_events_in_window": 66,
+ "escalation_records_outside_window": 8,
+ "events_without_client_msg_before": 0,
+ "promo_broadcasts_skipped": 0,
+ "events_answered": 36,
+ "events_unanswered_in_data": 30,
+ "wait_client_to_manager_min": {
+  "n": 36,
+  "median": 101.9,
+  "p75": 813.6,
+  "p90": 2714.5,
+  "min": 9.3,
+  "max": 7552.8
+ },
+ "wait_work_hours_min": {
+  "n": 29,
+  "median": 97.7,
+  "p75": 310.5,
+  "p90": 3263.3,
+  "min": 14.0,
+  "max": 7552.8
+ },
+ "wait_off_hours_min": {
+  "n": 7,
+  "median": 643.4,
+  "p75": 1167.5,
+  "p90": 1911.9,
+  "min": 9.3,
+  "max": 2457.2
+ },
+ "client_to_escalation_min": {
+  "n": 66,
+  "median": 30.6,
+  "p75": 31.2,
+  "p90": 60.8,
+  "min": 4.9,
+  "max": 910.8
+ },
+ "escalation_to_manager_min": {
+  "n": 36,
+  "median": 63.2,
+  "p75": 425.4,
+  "p90": 2370.5,
+  "min": 0.9,
+  "max": 7521.8
+ },
+ "unanswered_last_client_msg_has_qmark": 7,
+ "unanswered_escalated_less_than_24h_before_data_end": 3,
+ "answered_within_30": 3,
+ "share_wait_over_30": 0.917,
+ "share_wait_over_60": 0.639,
+ "share_wait_over_180": 0.361,
+ "sample30_manager_minutes": {
+  "n": 30,
+  "median": 5.4,
+  "p75": 24.8,
+  "p90": 126.5,
+  "min": 0.2,
+  "max": 737.9
+ },
+ "sample30_bot_replied_first": 13
+}

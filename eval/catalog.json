@@ -1,0 +1,1356 @@
+[
+ {
+  "source": "q01",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "198793",
+  "name": "Холодильник SAMSUNG RB38C679ES9",
+  "name_en": "Refrigerator SAMSUNG RB38C679ES9",
+  "price_uah": 31499,
+  "price_old_uah": 33704,
+  "stock_status": "Закінчується",
+  "stock_schema": "InStock",
+  "delivery_label": "На складі",
+  "url": "https://tt.ua/uk/holodilnik-samsung-rb38c679es9",
+  "category": "Холодильники",
+  "category_path": [
+   "Побутова техніка для дому",
+   "Холодильне обладнання",
+   "Холодильники",
+   "Холодильники SAMSUNG"
+  ],
+  "specs": [
+   "Тип холодильника: із системою NoFrost , з нижньою морозильною камерою",
+   "Висота: 203 см",
+   "Загальний об'єм: 385 л",
+   "Клас енергоспоживання: A+ (F новий стандарт)",
+   "Тип управління: електронне зі Smart технологію"
+  ]
+ },
+ {
+  "source": "q02",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "193735",
+  "name": "Осушувач повітря WETAIR WAD B 20 L",
+  "name_en": "Dehumidifier WETAIR WAD B 20 L",
+  "price_uah": 9998,
+  "price_old_uah": null,
+  "stock_status": "Немає в наявності",
+  "stock_schema": "OutOfStock",
+  "delivery_label": null,
+  "url": "https://tt.ua/uk/osushitel-vozduha-wetair-wad-b-20-l",
+  "category": "Осушувачі повітря",
+  "category_path": [
+   "Кліматична техніка",
+   "Осушувачі повітря",
+   "Осушувачі повітря WETAIR"
+  ],
+  "specs": [
+   "Принцип дії: конденсаційний",
+   "Потужність: 330 Вт",
+   "Рекомендована площа: 30 м2",
+   "Продуктивність осушення: 20 л/ на добу",
+   "Управління: дисплей , електронне"
+  ]
+ },
+ {
+  "source": "q03",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "212277",
+  "name": "Холодильник WHIRLPOOL WHD2 6472 X4E",
+  "name_en": "Refrigerator WHIRLPOOL WHD2 6472 X4E",
+  "price_uah": 35728,
+  "price_old_uah": 38229,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": null,
+  "url": "https://tt.ua/uk/holodilnik-whirlpool-whd2-6472-x4e",
+  "category": "Холодильники",
+  "category_path": [
+   "Побутова техніка для дому",
+   "Холодильне обладнання",
+   "Холодильники",
+   "Холодильники WHIRLPOOL"
+  ],
+  "specs": [
+   "Тип холодильника: із системою NoFrost , з верхньою морозильною камерою",
+   "Висота: 187 см",
+   "Загальний об'єм: 477 л",
+   "Клас енергоспоживання: A++ (Е, D новий стандарт)",
+   "Тип управління: електронне"
+  ]
+ },
+ {
+  "source": "q04",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "211541",
+  "name": "Вбудований холодильник GORENJE NRKI517E42",
+  "name_en": "Built-in refrigerator GORENJE NRKI517E42",
+  "price_uah": 29476,
+  "price_old_uah": null,
+  "stock_status": "Немає в наявності",
+  "stock_schema": "OutOfStock",
+  "delivery_label": null,
+  "url": "https://tt.ua/uk/holodilnik-gorenje-nrki517e42-vstr",
+  "category": "Вбудовані холодильники",
+  "category_path": [
+   "Вбудована техніка",
+   "Холодильне обладнання",
+   "Вбудовані холодильники",
+   "Вбудовані холодильники GORENJE"
+  ],
+  "specs": [
+   "Висота: 177 см",
+   "Тип холодильника: із системою NoFrost , з нижньою морозильною камерою",
+   "Загальний об'єм: 252 л",
+   "Кількість компресорів: 1 шт",
+   "Клас енергоспоживання: A++ (Е, D новий стандарт)"
+  ]
+ },
+ {
+  "source": "q05",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "214695",
+  "name": "Робот-пилосос ROBOROCK Saros 20 Sonic Complete Black",
+  "name_en": "Robot vacuum ROBOROCK Saros 20 Sonic Complete Black",
+  "price_uah": 48459,
+  "price_old_uah": 51851,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": "Доставка 1-2 дні",
+  "url": "https://tt.ua/uk/robot-pilesos-roborock-saros-20-sonic-complete-black",
+  "category": "Роботи-пилососи",
+  "category_path": [
+   "Дрібна побутова техніка",
+   "Техніка для дому",
+   "Роботи-пилососи",
+   "Роботи-пилососи ROBOROCK"
+  ],
+  "specs": [
+   "Тип прибирання: сухе/вологе",
+   "Особливості: віртуальна стіна , підтримка голосових помічників , програмування графіка прибирання , станція зарядна , станція самоочищення",
+   "Smart управління: є",
+   "Ємність пилозбірника: 0,26 л",
+   "Об'єм резервуара для води: 70 мл"
+  ]
+ },
+ {
+  "source": "q06",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "210455",
+  "name": "Прально-сушильна машина LG F2R5FG6J",
+  "name_en": "Washer-dryer LG F2R5FG6J",
+  "price_uah": 32487,
+  "price_old_uah": 34998,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": "На складі",
+  "url": "https://tt.ua/uk/stiralno-sushilnaya-mashina-lg-f2r5fg6j",
+  "category": "Прально-сушильні машини",
+  "category_path": [
+   "Побутова техніка для дому",
+   "Техніка для прання",
+   "Прально-сушильні машини",
+   "Прально-сушильні машини LG"
+  ],
+  "specs": [
+   "Завантаження прання білизни: 9 кг",
+   "Завантаження сушка білизни: 5 кг",
+   "Максимальна швидкість віджиму: 1200 об/хв",
+   "Тип сушіння: конденсаційний",
+   "Тип двигуна: інверторний з прямим приводом"
+  ]
+ },
+ {
+  "source": "q07",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "200412",
+  "name": "Планетарний міксер ZELMER ZKR 1350",
+  "name_en": "Stand mixer ZELMER ZKR 1350",
+  "price_uah": 5254,
+  "price_old_uah": null,
+  "stock_status": "Немає в наявності",
+  "stock_schema": "OutOfStock",
+  "delivery_label": null,
+  "url": "https://tt.ua/uk/mikser-zelmer-zkr-1350",
+  "category": "Кухонні комбайни",
+  "category_path": [
+   "Дрібна побутова техніка",
+   "Техніка для кухні",
+   "Кухонні комбайни",
+   "Кухонні комбайни ZELMER"
+  ],
+  "specs": [
+   "Тип: планетарний міксер",
+   "Потужність: 1200 Вт",
+   "Кількість швидкостей: 6",
+   "Імпульсний режим: є",
+   "Особливості: планетарне змішування"
+  ]
+ },
+ {
+  "source": "q08",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "213151",
+  "name": "Зарядна станція ECOFLOW DELTA 3 Classic EU-Version (EFDELTA3C-EU-CBox-L)",
+  "name_en": "Portable power station ECOFLOW DELTA 3 Classic EU-Version (EFDELTA3C-EU-CBox-L)",
+  "price_uah": 34847,
+  "price_old_uah": null,
+  "stock_status": "Немає в наявності",
+  "stock_schema": "OutOfStock",
+  "delivery_label": null,
+  "url": "https://tt.ua/uk/zaryadnaya-stantsiya-ecoflow-delta-3-classic-eu-version-efdelta3c-eu-cbox-l",
+  "category": "Зарядні станції для дому",
+  "category_path": [
+   "Телевізори та мультимедіа",
+   "Джерела живлення",
+   "Зарядні станції для дому",
+   "Зарядні станції для дому ECOFLOW"
+  ],
+  "specs": [
+   "Тип акумулятора: LiFePO4",
+   "Ємність: 1024 Вт·годину",
+   "Максимальна потужність: 3600 Вт",
+   "Smart управління: є",
+   "Номінальна потужність: 1800 Вт"
+  ]
+ },
+ {
+  "source": "q09",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "210943",
+  "name": "Пральна машина LG F4Y2VSGWE",
+  "name_en": "Washing machine LG F4Y2VSGWE",
+  "price_uah": 24400,
+  "price_old_uah": 25998,
+  "stock_status": "Закінчується",
+  "stock_schema": "InStock",
+  "delivery_label": "На складі",
+  "url": "https://tt.ua/uk/stiralnaya-mashina-lg-f4y2vsgwe",
+  "category": "Пральні машини",
+  "category_path": [
+   "Побутова техніка для дому",
+   "Техніка для прання",
+   "Пральні машини",
+   "Пральні машини LG"
+  ],
+  "specs": [
+   "Глибина: 55 см",
+   "Завантаження прання білизни: 9 кг",
+   "Максимальна швидкість віджимання: 1400 об/хв",
+   "Тип двигуна: інверторний з прямим приводом",
+   "Клас енергоспоживання: A (новий стандарт)"
+  ]
+ },
+ {
+  "source": "q10",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "215860",
+  "name": "Зарядна станція DJI Power 2000 (DYM2000H)",
+  "name_en": "Portable power station DJI Power 2000 (DYM2000H)",
+  "price_uah": 46190,
+  "price_old_uah": null,
+  "stock_status": "Немає в наявності",
+  "stock_schema": "OutOfStock",
+  "delivery_label": null,
+  "url": "https://tt.ua/uk/zaryadnaya-stantsiya-dji-power-2000-dym2000h",
+  "category": "Зарядні станції для дому",
+  "category_path": [
+   "Телевізори та мультимедіа",
+   "Джерела живлення",
+   "Зарядні станції для дому",
+   "Зарядні станції для дому DJI"
+  ],
+  "specs": [
+   "Тип акумулятора: LiFePO4",
+   "Ємність: 2048 Вт·годину",
+   "Максимальна потужність: 3600 Вт",
+   "Smart управління: є",
+   "Номінальна потужність: 3000 Вт"
+  ]
+ },
+ {
+  "source": "q11",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "search_query": "178401",
+  "search_first_result": "Варильна поверхня HANSA BHMS61414030",
+  "code": "178401",
+  "name": "Варильна поверхня комбінована HANSA BHMS61414030",
+  "name_en": "Hob combined HANSA BHMS61414030",
+  "price_uah": 12539,
+  "price_old_uah": 13999,
+  "stock_status": "Закінчується",
+  "stock_schema": "InStock",
+  "delivery_label": null,
+  "url": "https://tt.ua/uk/hansa-bhms61414030",
+  "category": "Варильні поверхні",
+  "category_path": [
+   "Вбудована техніка",
+   "Варильні поверхні",
+   "Варильні поверхні HANSA"
+  ],
+  "specs": [
+   "Варильна поверхня: комбінована 2+2",
+   "Зони нагріву: hi-light",
+   "Ширина: стандарт 60 см",
+   "Функції та особливості: зона розширення",
+   "Клас споживання електроенергії: передня ліва: 2300 Вт; задня ліва зона: 1200 Вт; передня права зона: 1200 Вт; задня права зона: 2200 Вт"
+  ]
+ },
+ {
+  "source": "q12",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "search_query": "215859",
+  "search_first_result": "Зарядна станція DJI Power 1000 Mini (DYM1000M)",
+  "code": "215859",
+  "name": "Зарядна станція DJI Power 1000 Mini (DYM1000M)",
+  "name_en": "Portable power station DJI Power 1000 Mini (DYM1000M)",
+  "price_uah": 25892,
+  "price_old_uah": null,
+  "stock_status": "Немає в наявності",
+  "stock_schema": "OutOfStock",
+  "delivery_label": null,
+  "url": "https://tt.ua/uk/zaryadnaya-stantsiya-dji-power-1000-mini-dym1000m",
+  "category": "Зарядні станції для дому",
+  "category_path": [
+   "Телевізори та мультимедіа",
+   "Джерела живлення",
+   "Зарядні станції для дому",
+   "Зарядні станції для дому DJI"
+  ],
+  "specs": [
+   "Тип акумулятора: LiFePO4",
+   "Ємність: 1008 Вт·годину",
+   "Smart управління: є",
+   "Номінальна потужність: 1000 Вт",
+   "Виходи (інтерфейси): AC-роз'єм , USB тип A , USB тип C , розетка 230 В"
+  ]
+ },
+ {
+  "source": "q13",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "174754",
+  "name": "Вбудована посудомийна машина HOTPOINT-ARISTON HI 5020 WEF",
+  "name_en": "Built-in dishwasher HOTPOINT-ARISTON HI 5020 WEF",
+  "price_uah": 18648,
+  "price_old_uah": 20244,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": "Доставка 1-2 дні",
+  "url": "https://tt.ua/uk/vstraivaemaya-posudomoechnaya-mashina-hotpoint-ariston-hi-5020-wef",
+  "category": "Вбудовувані посудомийні машини",
+  "category_path": [
+   "Вбудована техніка",
+   "Вбудовувані посудомийні машини",
+   "Вбудовувані посудомийні машини HOTPOINT-ARISTON"
+  ],
+  "specs": [
+   "Тип: широкі 60 см , повновбудовані",
+   "Максимальна місткість: 14 комплектів",
+   "Клас енергоспоживання: A++ (Е, D новий стандарт)",
+   "Тип мотора: інверторний",
+   "Кількість програм: 8 шт"
+  ]
+ },
+ {
+  "source": "q14",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "187168",
+  "name": "Плита комбінована ELEYUS COMBO 6007 EF IS+GR",
+  "name_en": "Dual-fuel cooker ELEYUS COMBO 6007 EF IS+GR",
+  "price_uah": 15809,
+  "price_old_uah": 16916,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": null,
+  "url": "https://tt.ua/uk/eleyus-combo-6007-ef-is-gr",
+  "category": "Плити",
+  "category_path": [
+   "Побутова техніка для дому",
+   "Плити",
+   "Плити ELEYUS"
+  ],
+  "specs": [
+   "Тип плити: комбінована",
+   "Розмір: 60х60 см",
+   "Варильна поверхня: газова",
+   "Зони нагріву: газові",
+   "Матеріал решіток: емальована сталь"
+  ]
+ },
+ {
+  "source": "q15",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "192506",
+  "name": "Ломтерізка GORENJE R708A",
+  "name_en": "Slicer GORENJE R708A",
+  "price_uah": 5778,
+  "price_old_uah": 6185,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": "Доставка 1-2 дні",
+  "url": "https://tt.ua/uk/gorenje-r708a",
+  "category": "Ломтерізки",
+  "category_path": [
+   "Дрібна побутова техніка",
+   "Техніка для кухні",
+   "Ломтерізки",
+   "Ломтерізки GORENJE"
+  ],
+  "specs": [
+   "Потужність: 100 Вт",
+   "Кількість режимів: 1",
+   "Захист від повторного включення: є",
+   "Імпульсний режим: є",
+   "Захисний кожух ножів: є"
+  ]
+ },
+ {
+  "source": "q16",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "search_query": "WHIRLPOOL WHK 26413 X6EA1",
+  "search_first_result": "Холодильник WHIRLPOOL WHK 26413 X6EA1",
+  "code": "213320",
+  "name": "Холодильник WHIRLPOOL WHK 26413 X6EA1",
+  "name_en": "Refrigerator WHIRLPOOL WHK 26413 X6EA1",
+  "price_uah": 26999,
+  "price_old_uah": 28889,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": "На складі",
+  "url": "https://tt.ua/uk/holodilnik-whirlpool-whk-26413-x6ea1",
+  "category": "Холодильники",
+  "category_path": [
+   "Побутова техніка для дому",
+   "Холодильне обладнання",
+   "Холодильники",
+   "Холодильники WHIRLPOOL"
+  ],
+  "specs": [
+   "Тип холодильника: із системою NoFrost , з нижньою морозильною камерою",
+   "Висота: 204 см",
+   "Загальний об'єм: 415 л",
+   "Клас енергоспоживання: A+++ (B, C новий стандарт)",
+   "Тип управління: електронне"
+  ]
+ },
+ {
+  "source": "q17",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "190809",
+  "name": "Духова шафа електрична BEKO BBIE123001XD",
+  "name_en": "Oven electric BEKO BBIE123001XD",
+  "price_uah": 12920,
+  "price_old_uah": 13824,
+  "stock_status": "Закінчується",
+  "stock_schema": "InStock",
+  "delivery_label": null,
+  "url": "https://tt.ua/uk/beko-bbie123001xd",
+  "category": "Духові шафи",
+  "category_path": [
+   "Вбудована техніка",
+   "Духові шафи",
+   "Духові шафи BEKO"
+  ],
+  "specs": [
+   "Духова шафа: електрична",
+   "Об'єм духової шафи: 72 л",
+   "Тип управління: електронно-механічне",
+   "Особливості управління: блокування від дітей , дисплей , сенсорне керування , таймер",
+   "Функції: гриль , конвекція , вентилятор охолодження"
+  ]
+ },
+ {
+  "source": "q18",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "196234",
+  "name": "Мультимейкер TEFAL SW383D10",
+  "name_en": "Multi-maker TEFAL SW383D10",
+  "price_uah": 2499,
+  "price_old_uah": 2924,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": "На складі",
+  "url": "https://tt.ua/uk/multimeyker-tefal-sw383d10",
+  "category": "Сендвічниці та мультимейкери",
+  "category_path": [
+   "Дрібна побутова техніка",
+   "Техніка для теплового приготування",
+   "Сендвічниці та мультимейкери",
+   "Сендвічниці та мультимейкери TEFAL"
+  ],
+  "specs": [
+   "Тип: мультимейкер",
+   "Потужність: 700 Вт",
+   "Пластини для приготування: сендвічів , вафель , паніні",
+   "Матеріал корпуса: метал+пластик",
+   "Особливості: змінні пластини , індикатор нагріву , вертикальне зберігання , ручка, що не нагрівається"
+  ]
+ },
+ {
+  "source": "q19",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "search_query": "210740",
+  "search_first_result": "Холодильник WHIRLPOOL WHK 26403 XP6E",
+  "code": "210740",
+  "name": "Холодильник WHIRLPOOL WHK 26403 XP6E",
+  "name_en": "Refrigerator WHIRLPOOL WHK 26403 XP6E",
+  "price_uah": 25999,
+  "price_old_uah": 27819,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": "На складі",
+  "url": "https://tt.ua/uk/holodilnik-whirlpool-whk-26403-xp6e",
+  "category": "Холодильники",
+  "category_path": [
+   "Побутова техніка для дому",
+   "Холодильне обладнання",
+   "Холодильники",
+   "Холодильники WHIRLPOOL"
+  ],
+  "specs": [
+   "Тип холодильника: із системою NoFrost , з нижньою морозильною камерою",
+   "Висота: 204 см",
+   "Загальний об'єм: 355 л",
+   "Клас енергоспоживання: A++ (Е, D новий стандарт)",
+   "Тип управління: електронне"
+  ]
+ },
+ {
+  "source": "q20",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "187092",
+  "name": "Праска TEFAL PUREGLISS Coppertinto & Black FV8064E0",
+  "name_en": "Iron TEFAL PUREGLISS Coppertinto & Black FV8064E0",
+  "price_uah": 3579,
+  "price_old_uah": 3999,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": "На складі",
+  "url": "https://tt.ua/uk/tefal-puregliss-coppertinto-black-fv8064e0",
+  "category": "Праски та парогенератори",
+  "category_path": [
+   "Дрібна побутова техніка",
+   "Техніка для дому",
+   "Праски та парогенератори",
+   "Праски та парогенератори TEFAL"
+  ],
+  "specs": [
+   "Тип: праска",
+   "Потужність: 3000 Вт",
+   "Тип підошви: кераміка",
+   "Автовідключення: є",
+   "Система крапля-стоп: є"
+  ]
+ },
+ {
+  "source": "q21",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "210752",
+  "name": "Мультипіч LIBERTON LAF-3217",
+  "name_en": "Air fryer oven LIBERTON LAF-3217",
+  "price_uah": 3582,
+  "price_old_uah": 3833,
+  "stock_status": "Закінчується",
+  "stock_schema": "InStock",
+  "delivery_label": null,
+  "url": "https://tt.ua/uk/multipech-liberton-laf-3217",
+  "category": "Мультипечі",
+  "category_path": [
+   "Дрібна побутова техніка",
+   "Техніка для теплового приготування",
+   "Мультипечі",
+   "Мультипечі LIBERTON"
+  ],
+  "specs": [
+   "Потужність: 1700 Вт",
+   "Об `єм: 9 л",
+   "Тип управління: електронне",
+   "Таймер: є",
+   "Покриття чаші: антипригарне"
+  ]
+ },
+ {
+  "source": "q22",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "search_query": "Elica LANE WH/A/52",
+  "search_first_result": "Витяжка ELICA LANE WH/A/52",
+  "code": "074274",
+  "name": "Витяжка повновбудовувана ELICA LANE WH/A/52",
+  "name_en": "Cooker hood fully built-in ELICA LANE WH/A/52",
+  "price_uah": 11637,
+  "price_old_uah": 12452,
+  "stock_status": "Під замовлення",
+  "stock_schema": "InStock",
+  "delivery_label": "Доставка 7-10 дней",
+  "url": "https://tt.ua/uk/elica-lane-wh-a-52",
+  "category": "Витяжки",
+  "category_path": [
+   "Вбудована техніка",
+   "Витяжки",
+   "Витяжки ELICA"
+  ],
+  "specs": [
+   "Тип: повновбудовувана",
+   "Продуктивність: 1050 м3/год",
+   "Тип управління: електронне",
+   "Ширина: 52 см",
+   "Режим рециркуляції: є"
+  ]
+ },
+ {
+  "source": "q23",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "search_query": "GORENJE GG5A11XF",
+  "search_first_result": "Плита GORENJE GG5A11XF",
+  "code": "186029",
+  "name": "Плита газова GORENJE GG5A11XF",
+  "name_en": "Gas cooker GORENJE GG5A11XF",
+  "price_uah": 17828,
+  "price_old_uah": 18892,
+  "stock_status": "Закінчується",
+  "stock_schema": "InStock",
+  "delivery_label": "На складі",
+  "url": "https://tt.ua/uk/gorenje-gg5a11xf",
+  "category": "Плити",
+  "category_path": [
+   "Побутова техніка для дому",
+   "Плити",
+   "Плити GORENJE"
+  ],
+  "specs": [
+   "Тип плити: газова",
+   "Розмір: 50х60 см",
+   "Варильна поверхня: газова",
+   "Зони нагріву: газові",
+   "Матеріал поверхні: нержавіюча сталь"
+  ]
+ },
+ {
+  "source": "q24",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "212932",
+  "name": "Вбудований холодильник ELECTROLUX LNA7NE18S",
+  "name_en": "Built-in refrigerator ELECTROLUX LNA7NE18S",
+  "price_uah": 30998,
+  "price_old_uah": 33168,
+  "stock_status": "Закінчується",
+  "stock_schema": "InStock",
+  "delivery_label": "На складі",
+  "url": "https://tt.ua/uk/vstraivaemiy-holodilnik-electrolux-lna7ne18s",
+  "category": "Вбудовані холодильники",
+  "category_path": [
+   "Вбудована техніка",
+   "Холодильне обладнання",
+   "Вбудовані холодильники",
+   "Вбудовані холодильники ELECTROLUX"
+  ],
+  "specs": [
+   "Висота: 177 см",
+   "Тип холодильника: із системою NoFrost , з нижньою морозильною камерою",
+   "Загальний об'єм: 257 л",
+   "Кількість компресорів: 1 шт",
+   "Клас енергоспоживання: A++ (Е, D новий стандарт)"
+  ]
+ },
+ {
+  "source": "q25",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "200413",
+  "name": "Планетарний міксер ZELMER ZKR 1355",
+  "name_en": "Stand mixer ZELMER ZKR 1355",
+  "price_uah": 5657,
+  "price_old_uah": 6053,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": "Доставка 1-2 дні",
+  "url": "https://tt.ua/uk/mikser-zelmer-zkr-1355",
+  "category": "Кухонні комбайни",
+  "category_path": [
+   "Дрібна побутова техніка",
+   "Техніка для кухні",
+   "Кухонні комбайни",
+   "Кухонні комбайни ZELMER"
+  ],
+  "specs": [
+   "Тип: планетарний міксер",
+   "Потужність: 1200 Вт",
+   "Кількість швидкостей: 6",
+   "Імпульсний режим: є",
+   "Особливості: 2 чаші"
+  ]
+ },
+ {
+  "source": "q26",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "110235",
+  "name": "Варильна поверхня газова WHIRLPOOL GOFL629S",
+  "name_en": "Hob gas WHIRLPOOL GOFL629S",
+  "price_uah": 15561,
+  "price_old_uah": 16650,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": "Доставка 1-2 дні",
+  "url": "https://tt.ua/uk/whirlpool-gofl629s",
+  "category": "Варильні поверхні",
+  "category_path": [
+   "Вбудована техніка",
+   "Варильні поверхні",
+   "Варильні поверхні WHIRLPOOL"
+  ],
+  "specs": [
+   "Варильна поверхня: газова",
+   "Зони нагріву: газові",
+   "Матеріал поверхні: загартоване скло",
+   "Тип керування: механічне",
+   "Ширина: стандарт 60 см"
+  ]
+ },
+ {
+  "source": "q27",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "210838",
+  "name": "Робот-пилосос DREAME Bot L40 Ultra CE Black (RLD52SE-Bl)",
+  "name_en": "Robot vacuum DREAME Bot L40 Ultra CE Black (RLD52SE-Bl)",
+  "price_uah": 27799,
+  "price_old_uah": 29189,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": null,
+  "url": "https://tt.ua/uk/robot-pilesos-dreame-bot-l40-ultra-ce-black-rld52se-bl",
+  "category": "Роботи-пилососи",
+  "category_path": [
+   "Дрібна побутова техніка",
+   "Техніка для дому",
+   "Роботи-пилососи",
+   "Роботи-пилососи DREAME"
+  ],
+  "specs": [
+   "Тип прибирання: сухе/вологе",
+   "Особливості: віртуальна стіна , підтримка голосових помічників , програмування графіка прибирання , станція зарядна , станція самоочищення",
+   "Smart управління: є",
+   "Ємність пилозбірника: 0,3 л",
+   "Площа прибирання: 195 м2"
+  ]
+ },
+ {
+  "source": "q28",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "207912",
+  "name": "Прально-сушильна машина HISENSE WD5I8043BWF",
+  "name_en": "Washer-dryer HISENSE WD5I8043BWF",
+  "price_uah": 27900,
+  "price_old_uah": 29853,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": "На складі",
+  "url": "https://tt.ua/uk/stiralno-sushilnaya-mashina-hisense-wd5i8043bwf",
+  "category": "Прально-сушильні машини",
+  "category_path": [
+   "Побутова техніка для дому",
+   "Техніка для прання",
+   "Прально-сушильні машини",
+   "Прально-сушильні машини HISENSE"
+  ],
+  "specs": [
+   "Завантаження прання білизни: 8 кг",
+   "Завантаження сушка білизни: 5 кг",
+   "Максимальна швидкість віджиму: 1400 об/хв",
+   "Тип сушіння: конденсаційний",
+   "Тип двигуна: інверторний"
+  ]
+ },
+ {
+  "source": "q29",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "201720",
+  "name": "Духова шафа газова GUNTER & HAUER EOG 604",
+  "name_en": "Oven gas GUNTER & HAUER EOG 604",
+  "price_uah": 18049,
+  "price_old_uah": null,
+  "stock_status": "Немає в наявності",
+  "stock_schema": "OutOfStock",
+  "delivery_label": null,
+  "url": "https://tt.ua/uk/duhovoy-shkaf-gunter-hauer-eog-604",
+  "category": "Духові шафи",
+  "category_path": [
+   "Вбудована техніка",
+   "Духові шафи",
+   "Духові шафи GUNTER & HAUER"
+  ],
+  "specs": [
+   "Духова шафа: газова",
+   "Об'єм духової шафи: 73 л",
+   "Тип управління: механічне",
+   "Особливості управління: таймер",
+   "Функції: гриль , конвекція"
+  ]
+ },
+ {
+  "source": "q30",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "search_query": "EDLER EDF102HPGB",
+  "search_first_result": "Сушильна машина EDLER EDF102HPGB",
+  "code": "212777",
+  "name": "Сушильна машина EDLER EDF102HPGB",
+  "name_en": "Tumble dryer EDLER EDF102HPGB",
+  "price_uah": 18200,
+  "price_old_uah": 21185,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": "На складі",
+  "url": "https://tt.ua/uk/sushilnaya-mashina-edler-edf102hpgb",
+  "category": "Сушильні машини",
+  "category_path": [
+   "Побутова техніка для дому",
+   "Техніка для прання",
+   "Сушильні машини",
+   "Сушильні машини EDLER"
+  ],
+  "specs": [
+   "Тип сушіння: з тепловим насосом",
+   "Завантаження сушка білизни: 10 кг",
+   "Клас енергоспоживання: А++ (Е, D новий стандарт)",
+   "Глибина: 61 см",
+   "Вага в упаковці: 58 кг"
+  ]
+ },
+ {
+  "source": "answer q15",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "search_query": "GORENJE R 506 E",
+  "search_first_result": "Ломтерізка GORENJE R 506 E",
+  "code": "045026",
+  "name": "Ломтерізка GORENJE R 506 E",
+  "name_en": "Slicer GORENJE R 506 E",
+  "price_uah": 3911,
+  "price_old_uah": 4485,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": null,
+  "url": "https://tt.ua/uk/gorenje-r-506-e",
+  "category": "Ломтерізки",
+  "category_path": [
+   "Дрібна побутова техніка",
+   "Техніка для кухні",
+   "Ломтерізки",
+   "Ломтерізки GORENJE"
+  ],
+  "specs": [
+   "Потужність: 160 Вт",
+   "Кількість режимів: 1",
+   "Захист від повторного включення: ні",
+   "Імпульсний режим: ні",
+   "Захисний кожух ножів: є"
+  ]
+ },
+ {
+  "source": "answer q26",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "165434",
+  "name": "Варильна поверхня газова WHIRLPOOL GOFL 629 S",
+  "name_en": "Hob gas WHIRLPOOL GOFL 629 S",
+  "price_uah": 13836,
+  "price_old_uah": 14805,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": "Доставка 2-5 днів",
+  "url": "https://tt.ua/uk/varochnaya-poverhnost-whirlpool-gofl-629-s",
+  "category": "Варильні поверхні",
+  "category_path": [
+   "Вбудована техніка",
+   "Варильні поверхні",
+   "Варильні поверхні WHIRLPOOL"
+  ],
+  "specs": [
+   "Варильна поверхня: газова",
+   "Зони нагріву: газові",
+   "Матеріал поверхні: загартоване скло",
+   "Тип керування: механічне",
+   "Ширина: стандарт 60 см"
+  ]
+ },
+ {
+  "source": "answer q27",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "search_query": "DREAME L40 Ultra CE White",
+  "search_first_result": "Робот-пилосос DREAME L40 Ultra CE White (RLD52SE-Wh)",
+  "code": "209492",
+  "name": "Робот-пилосос DREAME L40 Ultra CE White (RLD52SE-Wh)",
+  "name_en": "Robot vacuum DREAME L40 Ultra CE White (RLD52SE-Wh)",
+  "price_uah": 20271,
+  "price_old_uah": 21690,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": "Доставка 3-4 дні",
+  "url": "https://tt.ua/uk/robot-pilesos-dreame-l40-ultra-ce-white-rld52se-wh1",
+  "category": "Роботи-пилососи",
+  "category_path": [
+   "Дрібна побутова техніка",
+   "Техніка для дому",
+   "Роботи-пилососи",
+   "Роботи-пилососи DREAME"
+  ],
+  "specs": [
+   "Тип прибирання: сухе/вологе",
+   "Максимальна потужність: 75 Вт",
+   "Особливості: віртуальна стіна , підтримка голосових помічників , програмування графіка прибирання , станція зарядна , станція самоочищення",
+   "Smart управління: є",
+   "Ємність пилозбірника: 0,32 л"
+  ]
+ },
+ {
+  "source": "question q24",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "198487",
+  "name": "Пральна машина ELECTROLUX EW6F3414UU",
+  "name_en": "Washing machine ELECTROLUX EW6F3414UU",
+  "price_uah": 21499,
+  "price_old_uah": 23004,
+  "stock_status": "Закінчується",
+  "stock_schema": "InStock",
+  "delivery_label": "На складі",
+  "url": "https://tt.ua/uk/stiralnaya-mashina-electrolux-ew6f3414uu",
+  "category": "Пральні машини",
+  "category_path": [
+   "Побутова техніка для дому",
+   "Техніка для прання",
+   "Пральні машини",
+   "Пральні машини ELECTROLUX"
+  ],
+  "specs": [
+   "Глибина: 63.5 см",
+   "Завантаження прання білизни: 10 кг",
+   "Максимальна швидкість віджимання: 1400 об/хв",
+   "Тип двигуна: інверторний",
+   "Клас енергоспоживання: A+++ (B, C новий стандарт)"
+  ]
+ },
+ {
+  "source": "answer q11",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "134480",
+  "name": "Варильна поверхня комбінована VENTOLUX HG622 B9G RCS (BK)",
+  "name_en": "Hob combined VENTOLUX HG622 B9G RCS (BK)",
+  "price_uah": 8996,
+  "price_old_uah": 9626,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": "Доставка 1-2 дні",
+  "url": "https://tt.ua/uk/ventolux-hg622-b9g-rcs-bk",
+  "category": "Варильні поверхні",
+  "category_path": [
+   "Вбудована техніка",
+   "Варильні поверхні",
+   "Варильні поверхні VENTOLUX"
+  ],
+  "specs": [
+   "Варильна поверхня: комбінована 2+2",
+   "Зони нагріву: hi-light",
+   "Матеріал поверхні: загартоване скло",
+   "Тип керування: механічне",
+   "Ширина: стандарт 60 см"
+  ]
+ },
+ {
+  "source": "answer q11",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "198072",
+  "name": "Варильна поверхня комбінована ELECTROLUX KDI641723K",
+  "name_en": "Hob combined ELECTROLUX KDI641723K",
+  "price_uah": 18598,
+  "price_old_uah": 19900,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": "На складі",
+  "url": "https://tt.ua/uk/varochnaya-poverhnost-electrolux-kdi-641723-k",
+  "category": "Варильні поверхні",
+  "category_path": [
+   "Вбудована техніка",
+   "Варильні поверхні",
+   "Варильні поверхні ELECTROLUX"
+  ],
+  "specs": [
+   "Варильна поверхня: комбінована 2+2",
+   "Зони нагріву: газові , індукційні",
+   "Матеріал поверхні: склокераміка",
+   "Тип керування: сенсорне-механічне",
+   "Ширина: стандарт 60 см"
+  ]
+ },
+ {
+  "source": "popular",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "142798",
+  "name": "З'єднувальна планка SAMSUNG SKK-UDW",
+  "name_en": "Stacking kit SAMSUNG SKK-UDW",
+  "price_uah": 2450,
+  "price_old_uah": null,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": "Доставка 1-2 дні",
+  "url": "https://tt.ua/uk/samsung-skk-udw",
+  "category": "Для пральних машин",
+  "category_path": [
+   "Побутова техніка для дому",
+   "Аксесуари до побутової техніки",
+   "Аксесуари для пральних машин",
+   "Аксесуари для пральних машин SAMSUNG"
+  ],
+  "specs": [
+   "Тип: З'єднувальні рамки",
+   "Підходить для :: для пральних та сушильних машин Samsung",
+   "Додаткова інформація: Сполучна планка з висувною полицею для білизни. Вага 5,5 кг",
+   "Розміри: 605 х 75 х 565 мм",
+   "Гарантія: 1 місяць від виробника"
+  ]
+ },
+ {
+  "source": "popular",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "214142",
+  "name": "Пральна машина CANDY EY 26SB7-S",
+  "name_en": "Washing machine CANDY EY 26SB7-S",
+  "price_uah": 12500,
+  "price_old_uah": 13375,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": "На складі",
+  "url": "https://tt.ua/uk/stiralnaya-mashina-candy-ey-26sb7-s",
+  "category": "Пральні машини",
+  "category_path": [
+   "Побутова техніка для дому",
+   "Техніка для прання",
+   "Пральні машини",
+   "Пральні машини CANDY"
+  ],
+  "specs": [
+   "Глибина: 44 см",
+   "Завантаження прання білизни: 6 кг",
+   "Максимальна швидкість віджимання: 1200 об/хв",
+   "Тип двигуна: інверторний",
+   "Клас енергоспоживання: A (новий стандарт)"
+  ]
+ },
+ {
+  "source": "popular",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "208065",
+  "name": "Пральна машина CANDY GD 48SB6-S",
+  "name_en": "Washing machine CANDY GD 48SB6-S",
+  "price_uah": 15600,
+  "price_old_uah": 16499,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": "На складі",
+  "url": "https://tt.ua/uk/stiralnaya-mashina-candy-gd-48sb6-s",
+  "category": "Пральні машини",
+  "category_path": [
+   "Побутова техніка для дому",
+   "Техніка для прання",
+   "Пральні машини",
+   "Пральні машини CANDY"
+  ],
+  "specs": [
+   "Глибина: 48 см",
+   "Завантаження прання білизни: 8 кг",
+   "Максимальна швидкість віджимання: 1350 об/хв",
+   "Тип двигуна: інверторний",
+   "Клас енергоспоживання: A (новий стандарт)"
+  ]
+ },
+ {
+  "source": "popular",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "203550",
+  "name": "Вбудований холодильник SAMSUNG BRB70F26C1S0",
+  "name_en": "Built-in refrigerator SAMSUNG BRB70F26C1S0",
+  "price_uah": 33998,
+  "price_old_uah": 36378,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": "На складі",
+  "url": "https://tt.ua/uk/holodilnik-samsung-brb70f26c1s0-vstr",
+  "category": "Вбудовані холодильники",
+  "category_path": [
+   "Вбудована техніка",
+   "Холодильне обладнання",
+   "Вбудовані холодильники",
+   "Вбудовані холодильники SAMSUNG"
+  ],
+  "specs": [
+   "Висота: 177 см",
+   "Тип холодильника: із системою NoFrost , з нижньою морозильною камерою",
+   "Загальний об'єм: 275 л",
+   "Кількість компресорів: 1 шт",
+   "Клас енергоспоживання: A+ (F новий стандарт)"
+  ]
+ },
+ {
+  "source": "popular",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "216251",
+  "name": "Зарядна станція MARSTEK Venus E 3.0",
+  "name_en": "Portable power station MARSTEK Venus E 3.0",
+  "price_uah": 64769,
+  "price_old_uah": 69303,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": null,
+  "url": "https://tt.ua/uk/zaryadnaya-stantsiya-marstek-venus-e-3-0",
+  "category": "Зарядні станції для дому",
+  "category_path": [
+   "Телевізори та мультимедіа",
+   "Джерела живлення",
+   "Зарядні станції для дому",
+   "Зарядні станції для дому MARSTEK"
+  ],
+  "specs": [
+   "Тип акумулятора: LiFePO4",
+   "Ємність: 5120 Вт·годину",
+   "Максимальна потужність: 3500 Вт",
+   "Smart управління: є",
+   "Номінальна потужність: 2500 Вт"
+  ]
+ },
+ {
+  "source": "popular",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "209293",
+  "name": "Зарядна станція BLUETTI Elite 100 V2 (P-EL100V2-EU-GY-BL-010)",
+  "name_en": "Portable power station BLUETTI Elite 100 V2 (P-EL100V2-EU-GY-BL-010)",
+  "price_uah": 32815,
+  "price_old_uah": 35112,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": null,
+  "url": "https://tt.ua/uk/zaryadnaya-stantsiya-bluetti-elite-100-v2-p-el100v2-eu-gy-bl-010",
+  "category": "Зарядні станції для дому",
+  "category_path": [
+   "Телевізори та мультимедіа",
+   "Джерела живлення",
+   "Зарядні станції для дому",
+   "Зарядні станції для дому BLUETTI"
+  ],
+  "specs": [
+   "Тип акумулятора: LiFePO4",
+   "Ємність: 1024 Вт·годину",
+   "Максимальна потужність: 2700 Вт",
+   "Smart управління: є",
+   "Номінальна потужність: 1800 Вт"
+  ]
+ },
+ {
+  "source": "popular",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "214235",
+  "name": "Сушильна машина HAIER HD80-D357U1",
+  "name_en": "Tumble dryer HAIER HD80-D357U1",
+  "price_uah": 27900,
+  "price_old_uah": 29853,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": "На складі",
+  "url": "https://tt.ua/uk/sushilnaya-mashina-haier-hd80-d357u1",
+  "category": "Сушильні машини",
+  "category_path": [
+   "Побутова техніка для дому",
+   "Техніка для прання",
+   "Сушильні машини",
+   "Сушильні машини HAIER"
+  ],
+  "specs": [
+   "Тип сушіння: з тепловим насосом",
+   "Завантаження сушка білизни: 8 кг",
+   "Клас енергоспоживання: А++ (Е, D новий стандарт)",
+   "Тип двигуна: інверторний",
+   "Глибина: 52 см"
+  ]
+ },
+ {
+  "source": "popular",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "209929",
+  "name": "Сушильна машина CANDY GDS 7N2B-S",
+  "name_en": "Tumble dryer CANDY GDS 7N2B-S",
+  "price_uah": 22399,
+  "price_old_uah": 23967,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": "На складі",
+  "url": "https://tt.ua/uk/sushilnaya-mashina-candy-gds-7n2b-s",
+  "category": "Сушильні машини",
+  "category_path": [
+   "Побутова техніка для дому",
+   "Техніка для прання",
+   "Сушильні машини",
+   "Сушильні машини CANDY"
+  ],
+  "specs": [
+   "Тип сушіння: з тепловим насосом",
+   "Завантаження сушка білизни: 7 кг",
+   "Клас енергоспоживання: А++ (Е, D новий стандарт)",
+   "Тип двигуна: інверторний",
+   "Глибина: 47 см"
+  ]
+ },
+ {
+  "source": "popular",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "201041",
+  "name": "Пральна машина ARDESTO WMW-6105DGBI",
+  "name_en": "Washing machine ARDESTO WMW-6105DGBI",
+  "price_uah": 11499,
+  "price_old_uah": 12304,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": "На складі",
+  "url": "https://tt.ua/uk/stiralnaya-mashina-ardesto-wmw-6105dgbi",
+  "category": "Пральні машини",
+  "category_path": [
+   "Побутова техніка для дому",
+   "Техніка для прання",
+   "Пральні машини",
+   "Пральні машини ARDESTO"
+  ],
+  "specs": [
+   "Глибина: 46.5 см",
+   "Завантаження прання білизни: 6 кг",
+   "Максимальна швидкість віджимання: 1200 об/хв",
+   "Тип двигуна: інверторний",
+   "Клас енергоспоживання: A+++ (B, C новий стандарт)"
+  ]
+ },
+ {
+  "source": "popular",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "211950",
+  "name": "Плитка електрична PHILIPS HD5830/90",
+  "name_en": "Electric hotplate PHILIPS HD5830/90",
+  "price_uah": 2948,
+  "price_old_uah": 4045,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": "На складі",
+  "url": "https://tt.ua/uk/plitka-elektricheskaya-philips-hd5830-90",
+  "category": "Настільні плити",
+  "category_path": [
+   "Дрібна побутова техніка",
+   "Техніка для теплового приготування",
+   "Настільні плити",
+   "Настільні плити PHILIPS"
+  ],
+  "specs": [
+   "Тип плитки: електрична",
+   "Зони нагріву: індукція",
+   "Тип управління: сенсорне",
+   "Покриття робочої поверхні: скло",
+   "Кількість зон нагріву: 1"
+  ]
+ },
+ {
+  "source": "popular",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "214965",
+  "name": "Пральна машина EDLER EWF6014SSIP",
+  "name_en": "Washing machine EDLER EWF6014SSIP",
+  "price_uah": 10199,
+  "price_old_uah": 10799,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": "На складі",
+  "url": "https://tt.ua/uk/stiralnaya-mashina-edler-ewf6014ssip",
+  "category": "Пральні машини",
+  "category_path": [
+   "Побутова техніка для дому",
+   "Техніка для прання",
+   "Пральні машини",
+   "Пральні машини EDLER"
+  ],
+  "specs": [
+   "Глибина: 41 см",
+   "Завантаження прання білизни: 6 кг",
+   "Максимальна швидкість віджимання: 1000 об/хв",
+   "Тип двигуна: інверторний",
+   "Клас енергоспоживання: A+++ (B, C новий стандарт)"
+  ]
+ },
+ {
+  "source": "popular",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "209872",
+  "name": "Пральна машина LG F2Y5FS6W",
+  "name_en": "Washing machine LG F2Y5FS6W",
+  "price_uah": 24199,
+  "price_old_uah": 25893,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": "На складі",
+  "url": "https://tt.ua/uk/stiralnaya-mashina-lg-f2y5fs6w",
+  "category": "Пральні машини",
+  "category_path": [
+   "Побутова техніка для дому",
+   "Техніка для прання",
+   "Пральні машини",
+   "Пральні машини LG"
+  ],
+  "specs": [
+   "Глибина: 47.5 см",
+   "Завантаження прання білизни: 9 кг",
+   "Максимальна швидкість віджимання: 1200 об/хв",
+   "Тип двигуна: інверторний з прямим приводом",
+   "Клас енергоспоживання: A (новий стандарт)"
+  ]
+ },
+ {
+  "source": "popular",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "206958",
+  "name": "Посудомийна машина BOSCH SMH4ECX28E",
+  "name_en": "Dishwasher BOSCH SMH4ECX28E",
+  "price_uah": 43998,
+  "price_old_uah": 46999,
+  "stock_status": "Закінчується",
+  "stock_schema": "InStock",
+  "delivery_label": "На складі",
+  "url": "https://tt.ua/uk/posudomoechnaya-mashina-bosch-smh4ecx28e-vstr",
+  "category": "Вбудовувані посудомийні машини",
+  "category_path": [
+   "Вбудована техніка",
+   "Вбудовувані посудомийні машини",
+   "Вбудовувані посудомийні машини BOSCH"
+  ],
+  "specs": [
+   "Тип: широкі 60 см , повновбудовані",
+   "Максимальна місткість: 14 комплектів",
+   "Клас енергоспоживання: A (новий стандарт)",
+   "Тип мотора: інверторний",
+   "Кількість програм: 6 шт"
+  ]
+ },
+ {
+  "source": "popular",
+  "fetched_at": "2026-11-23T09:07:11+00:00",
+  "code": "156273",
+  "name": "Осушувач повітря WETAIR WAD-A10L",
+  "name_en": "Dehumidifier WETAIR WAD-A10L",
+  "price_uah": 6498,
+  "price_old_uah": 6953,
+  "stock_status": "Є в наявності",
+  "stock_schema": "InStock",
+  "delivery_label": "На складі",
+  "url": "https://tt.ua/uk/wetair-wad-a10l",
+  "category": "Осушувачі повітря",
+  "category_path": [
+   "Кліматична техніка",
+   "Осушувачі повітря",
+   "Осушувачі повітря WETAIR"
+  ],
+  "specs": [
+   "Принцип дії: конденсаційний",
+   "Потужність: 195 Вт",
+   "Рекомендована площа: 20 м2",
+   "Продуктивність осушення: 10 л/ на добу",
+   "Управління: дисплей , Smart (Wi-Fi)"
+  ]
+ }
+]

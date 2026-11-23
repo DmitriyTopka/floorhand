@@ -33,6 +33,18 @@ def _tokens(text: str) -> set[str]:
     return {w.lower() for w in _WORD.findall(text) if len(w) > 1 and w.lower() not in _STOP}
 
 
+_STOCK_EN = {
+    "є в наявності": "In stock",
+    "закінчується": "In stock, last units",
+    "немає в наявності": "Out of stock",
+    "під замовлення": "Available to order",
+}
+
+
+def stock_en(status: str) -> str:
+    return _STOCK_EN.get(status.strip().lower(), status)
+
+
 class Catalog:
     def __init__(self, products: list[Product]):
         self.products = products
@@ -48,7 +60,7 @@ class Catalog:
         for it in items:
             products.append(Product(
                 code=str(it.get("code", "")), name=it.get("name", ""), name_en=it.get("name_en", ""),
-                price_uah=it.get("price_uah"), stock_status=it.get("stock_status", "unknown"),
+                price_uah=it.get("price_uah"), stock_status=stock_en(it.get("stock_status", "unknown")),
                 url=it.get("url", ""), category=it.get("category", ""), specs=list(it.get("specs", [])),
             ))
         return cls(products)
