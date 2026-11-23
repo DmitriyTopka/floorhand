@@ -134,7 +134,7 @@ async function tap() {
   try {
     if (d.confident) {
       await send(uid, t.id, draftIndex)
-      flash('Sent ✓')
+      flash('Sent')
     } else {
       await handoff(uid, t.id)
       flash('Handed off to a person')

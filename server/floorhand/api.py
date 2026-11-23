@@ -65,10 +65,14 @@ def _device(uid: str | None) -> str:
 
 
 @app.get("/api/card")
-def card(x_device_key: str | None = Header(default=None)) -> dict:
+def card(request: Request, x_device_key: str | None = Header(default=None)) -> dict:
     uid = _device(x_device_key)
     if not store.is_paired(uid):
-        return {"mode": "pair", "code": store.pair_code_for(uid)}
+        try:
+            code = store.pair_code_for(uid, request.client.host if request.client else "unknown")
+        except Store.PairingBusy as exc:
+            raise HTTPException(503, str(exc))
+        return {"mode": "pair", "code": code}
     queue = _visible(uid)
     ready = [t for t in queue if t["status"] == "waiting"]
     if not ready:
@@ -141,6 +145,17 @@ if config.DEV_FAKE_TELEGRAM:
         """Play a customer writing to the bot (local development only)."""
         bot.handle_update({"message": {"chat": {"id": body.chat_id}, "from": {"first_name": body.name},
                                        "text": body.text}})
+        return {"ok": True}
+
+    class DevConsent(BaseModel):
+        chat_id: int
+        choice: str  # ai | human
+
+    @app.post("/dev/consent")
+    def dev_consent(body: DevConsent) -> dict:
+        bot.handle_update({"callback_query": {"id": "dev", "data": f"consent:{body.choice}",
+                                              "message": {"chat": {"id": body.chat_id}},
+                                              "from": {"first_name": "Anna"}}})
         return {"ok": True}
 
     class DevPair(BaseModel):

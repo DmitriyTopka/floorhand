@@ -145,9 +145,15 @@ def test_short_or_guessable_device_key_rejected():
     assert TestClient(api.app).get("/api/card", headers={"X-Device-Key": "g2-123"}).status_code == 400
 
 
-def test_pair_codes_evict_oldest_instead_of_failing(tmp_path):
+def test_pair_codes_limited_per_address_and_never_evicted(tmp_path):
     s = Store(tmp_path)
-    s.MAX_CODES = 3
-    keys = [f"device-key-number-{i:04d}-abcdef" for i in range(5)]
-    codes = [s.pair_code_for(k) for k in keys]
-    assert len(s.state["pair_codes"]) == 3 and s.confirm_pair(codes[-1], 1) == keys[-1]
+    s.NEW_DEVICES_PER_IP, s.MAX_CODES = 2, 3
+    keys = [f"device-key-number-{i:04d}-abcdef" for i in range(4)]
+    first = s.pair_code_for(keys[0], "1.1.1.1")
+    s.pair_code_for(keys[1], "1.1.1.1")
+    with pytest.raises(Store.PairingBusy):
+        s.pair_code_for(keys[2], "1.1.1.1")        # same address, over its limit
+    s.pair_code_for(keys[2], "2.2.2.2")
+    with pytest.raises(Store.PairingBusy):
+        s.pair_code_for(keys[3], "3.3.3.3")        # table full: refuse, don't evict
+    assert s.confirm_pair(first, 1) == keys[0]

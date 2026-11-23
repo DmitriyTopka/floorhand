@@ -78,7 +78,12 @@ class Store:
     CODE_TTL = 600
     MAX_CODES = 500
 
-    def pair_code_for(self, device: str) -> str:
+    NEW_DEVICES_PER_IP = 20  # per CODE_TTL window
+
+    class PairingBusy(Exception):
+        pass
+
+    def pair_code_for(self, device: str, ip: str = "local") -> str:
         with _LOCK:
             now = time.time()
             codes = self.state["pair_codes"]
@@ -87,13 +92,17 @@ class Store:
             for code, v in codes.items():
                 if v["device"] == device:
                     return code
-            while len(codes) >= self.MAX_CODES:  # evict the oldest instead of refusing everyone
-                codes.pop(min(codes, key=lambda c: codes[c]["at"]))
+            # one address cannot fill the table, and a full table refuses new
+            # codes rather than evicting codes other people are about to type
+            if sum(1 for v in codes.values() if v.get("ip") == ip) >= self.NEW_DEVICES_PER_IP:
+                raise Store.PairingBusy("too many new devices from this address")
+            if len(codes) >= self.MAX_CODES:
+                raise Store.PairingBusy("pairing is busy, try again in a few minutes")
             while True:
                 code = f"{secrets.randbelow(900000) + 100000}"
                 if code not in codes:
                     break
-            codes[code] = {"device": device, "at": now}
+            codes[code] = {"device": device, "at": now, "ip": ip}
             self._save()
             return code
 
