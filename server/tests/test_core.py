@@ -9,6 +9,7 @@ from floorhand.drafts import guard, template_drafts
 from floorhand.store import Store
 
 DEV = "k7Qm2Zp9Xc4Lr8Tv1Wb6Yn3Ha5"
+H = {"X-Device-Key": DEV}
 
 FRIDGE = Product(code="200413", name="Холодильник BOSCH KGN39VLEB", name_en="Bosch KGN39VLEB fridge",
                  price_uah=24999, stock_status="In stock", url="https://tt.ua/uk/bosch-kgn39vleb",
@@ -98,17 +99,17 @@ def test_pairing_and_isolation(tmp_path, monkeypatch):
     monkeypatch.setattr(api, "bot", b)
     monkeypatch.setattr(api, "catalog", b.catalog)
     client = TestClient(api.app)
-    code = client.get("/api/card", params={"uid": DEV}).json()["code"]
+    code = client.get("/api/card", headers=H).json()["code"]
     b.handle_update(msg(1, f"/pair {code}"))
     for chat in (1, 2):
         s.set_customer(chat, consent="human")
         b.handle_update(msg(chat, "Код 200413 in stock?"))
-    card = client.get("/api/card", params={"uid": DEV}).json()
+    card = client.get("/api/card", headers=H).json()
     assert card["mode"] == "card" and card["queue"] == 1           # sees only own question
     tid = card["ticket"]["id"]
-    r = client.post("/api/send", json={"uid": DEV, "ticket_id": tid, "draft": 0})
+    r = client.post("/api/send", json={"ticket_id": tid, "draft": 0}, headers=H)
     assert r.status_code == 200
-    assert client.get("/api/card", params={"uid": DEV}).json()["mode"] == "empty"
+    assert client.get("/api/card", headers=H).json()["mode"] == "empty"
 
 
 def test_low_confidence_cannot_be_sent(tmp_path, monkeypatch):
@@ -124,8 +125,8 @@ def test_low_confidence_cannot_be_sent(tmp_path, monkeypatch):
     s.state["devices"][DEV] = {"owner_chat_id": 99, "paired_at": 0}
     s.set_customer(5, consent="human")
     b.handle_update(msg(5, "do you sell lawn mowers?"))
-    tid = client.get("/api/card", params={"uid": DEV}).json()["ticket"]["id"]
-    assert client.post("/api/send", json={"uid": DEV, "ticket_id": tid, "draft": 0}).status_code == 409
+    tid = client.get("/api/card", headers=H).json()["ticket"]["id"]
+    assert client.post("/api/send", json={"ticket_id": tid, "draft": 0}, headers=H).status_code == 409
 
 
 def test_pair_rules(tmp_path):
@@ -141,4 +142,12 @@ def test_pair_rules(tmp_path):
 def test_short_or_guessable_device_key_rejected():
     from fastapi.testclient import TestClient
     import floorhand.api as api
-    assert TestClient(api.app).get("/api/card", params={"uid": "g2-123"}).status_code == 400
+    assert TestClient(api.app).get("/api/card", headers={"X-Device-Key": "g2-123"}).status_code == 400
+
+
+def test_pair_codes_evict_oldest_instead_of_failing(tmp_path):
+    s = Store(tmp_path)
+    s.MAX_CODES = 3
+    keys = [f"device-key-number-{i:04d}-abcdef" for i in range(5)]
+    codes = [s.pair_code_for(k) for k in keys]
+    assert len(s.state["pair_codes"]) == 3 and s.confirm_pair(codes[-1], 1) == keys[-1]

@@ -3,7 +3,7 @@ import time
 
 import re
 
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, Header, HTTPException, Request
 from fastapi.concurrency import run_in_threadpool
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -19,7 +19,7 @@ bot = Bot(store, catalog)
 
 app = FastAPI(title="Floorhand")
 app.add_middleware(CORSMiddleware, allow_origins=config.ALLOWED_ORIGINS, allow_methods=["GET", "POST"],
-                   allow_headers=["*"])
+                   allow_headers=["Content-Type", "X-Device-Key"])
 
 
 @app.on_event("startup")
@@ -40,8 +40,8 @@ def _visible(uid: str) -> list[dict]:
     return sorted(tickets, key=lambda t: t["created"])
 
 
-def _own(uid: str, ticket_id: int) -> dict:
-    _device(uid)
+def _own(uid: str | None, ticket_id: int) -> dict:
+    uid = _device(uid)
     t = next((t for t in _visible(uid) if t["id"] == ticket_id), None)
     if not t:
         raise HTTPException(404, "no such ticket for this device")
@@ -58,15 +58,15 @@ _DEVICE = re.compile(r"^[A-Za-z0-9_-]{22,64}$")
 MAX_VOICE_BYTES = 16000 * 2 * 15  # 15 s of 16 kHz 16-bit mono
 
 
-def _device(uid: str) -> str:
-    if not _DEVICE.match(uid):
+def _device(uid: str | None) -> str:
+    if not uid or not _DEVICE.match(uid):
         raise HTTPException(400, "device key must be 22-64 url-safe characters")
     return uid
 
 
 @app.get("/api/card")
-def card(uid: str) -> dict:
-    _device(uid)
+def card(x_device_key: str | None = Header(default=None)) -> dict:
+    uid = _device(x_device_key)
     if not store.is_paired(uid):
         return {"mode": "pair", "code": store.pair_code_for(uid)}
     queue = _visible(uid)
@@ -84,14 +84,13 @@ def card(uid: str) -> dict:
 
 
 class SendBody(BaseModel):
-    uid: str
     ticket_id: int
     draft: int
 
 
 @app.post("/api/send")
-def send(body: SendBody) -> dict:
-    t = _own(body.uid, body.ticket_id)
+def send(body: SendBody, x_device_key: str | None = Header(default=None)) -> dict:
+    t = _own(x_device_key, body.ticket_id)
     if not (0 <= body.draft < len(t["drafts"])):
         raise HTTPException(400, "bad draft index")
     d = t["drafts"][body.draft]
@@ -102,20 +101,19 @@ def send(body: SendBody) -> dict:
 
 
 class TicketBody(BaseModel):
-    uid: str
     ticket_id: int
 
 
 @app.post("/api/handoff")
-def handoff(body: TicketBody) -> dict:
-    t = _own(body.uid, body.ticket_id)
+def handoff(body: TicketBody, x_device_key: str | None = Header(default=None)) -> dict:
+    t = _own(x_device_key, body.ticket_id)
     store.update_ticket(t["id"], status="handed_off")
     return {"ok": True}
 
 
 @app.post("/api/voice")
-async def voice(uid: str, ticket_id: int, request: Request) -> dict:
-    t = _own(uid, ticket_id)
+async def voice(ticket_id: int, request: Request, x_device_key: str | None = Header(default=None)) -> dict:
+    t = _own(x_device_key, ticket_id)
     declared = int(request.headers.get("content-length") or 0)
     if declared > MAX_VOICE_BYTES:
         raise HTTPException(413, "voice note too long (15 s max)")

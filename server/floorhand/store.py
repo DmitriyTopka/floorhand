@@ -87,8 +87,8 @@ class Store:
             for code, v in codes.items():
                 if v["device"] == device:
                     return code
-            if len(codes) >= self.MAX_CODES:
-                raise RuntimeError("too many pending pair codes")
+            while len(codes) >= self.MAX_CODES:  # evict the oldest instead of refusing everyone
+                codes.pop(min(codes, key=lambda c: codes[c]["at"]))
             while True:
                 code = f"{secrets.randbelow(900000) + 100000}"
                 if code not in codes:
