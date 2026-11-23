@@ -95,7 +95,7 @@ async function startVoice() {
   if (card?.mode !== 'card' || recording) return
   recording = true
   chunks = []
-  status = 'Listening… release to apply'
+  status = 'Listening... release to apply'
   paint()
   await bridge.audioControl(true)
 }
@@ -111,7 +111,7 @@ async function stopVoice() {
     pcm.set(c, o)
     o += c.length
   }
-  status = 'Rewriting…'
+  status = 'Rewriting...'
   paint()
   try {
     const res = await voice(uid, card.ticket.id, pcm)

@@ -8,7 +8,7 @@ const LINE = 44 // rough characters per line at the firmware font
 function clip(text: string, lines: number): string {
   const max = LINE * lines
   const flat = text.replace(/\s+/g, ' ').trim()
-  return flat.length <= max ? flat : flat.slice(0, max - 1).trimEnd() + '…'
+  return flat.length <= max ? flat : flat.slice(0, max - 1).trimEnd() + '...'
 }
 
 function ago(s: number): string {
@@ -17,7 +17,7 @@ function ago(s: number): string {
 
 export function render(card: Card | null, draftIndex: number, status: string | null, uidReady: boolean): Blocks {
   if (!uidReady || !card) {
-    return { head: 'Floorhand', question: 'Connecting to the shop…', draft: '', foot: status ?? '' }
+    return { head: 'Floorhand', question: 'Connecting to the shop...', draft: '', foot: status ?? '' }
   }
   if (card.mode === 'pair') {
     return {
@@ -30,7 +30,7 @@ export function render(card: Card | null, draftIndex: number, status: string | n
   if (card.mode === 'empty') {
     return {
       head: 'Floorhand',
-      question: card.drafting ? `Preparing ${card.drafting} answer(s)…` : 'No customers waiting.',
+      question: card.drafting ? `Preparing ${card.drafting} answer(s)...` : 'No customers waiting.',
       draft: '',
       foot: status ?? 'double tap to exit',
     }
