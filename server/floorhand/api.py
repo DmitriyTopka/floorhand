@@ -1,7 +1,10 @@
 """HTTP API the glasses app calls. Keys stay here, never in the app."""
 import time
 
+import re
+
 from fastapi import FastAPI, HTTPException, Request
+from fastapi.concurrency import run_in_threadpool
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
@@ -38,6 +41,7 @@ def _visible(uid: str) -> list[dict]:
 
 
 def _own(uid: str, ticket_id: int) -> dict:
+    _device(uid)
     t = next((t for t in _visible(uid) if t["id"] == ticket_id), None)
     if not t:
         raise HTTPException(404, "no such ticket for this device")
@@ -50,8 +54,19 @@ def health() -> dict:
             "bot": bool(config.TELEGRAM_BOT_TOKEN)}
 
 
+_DEVICE = re.compile(r"^[A-Za-z0-9_-]{22,64}$")
+MAX_VOICE_BYTES = 16000 * 2 * 15  # 15 s of 16 kHz 16-bit mono
+
+
+def _device(uid: str) -> str:
+    if not _DEVICE.match(uid):
+        raise HTTPException(400, "device key must be 22-64 url-safe characters")
+    return uid
+
+
 @app.get("/api/card")
 def card(uid: str) -> dict:
+    _device(uid)
     if not store.is_paired(uid):
         return {"mode": "pair", "code": store.pair_code_for(uid)}
     queue = _visible(uid)
@@ -101,10 +116,41 @@ def handoff(body: TicketBody) -> dict:
 @app.post("/api/voice")
 async def voice(uid: str, ticket_id: int, request: Request) -> dict:
     t = _own(uid, ticket_id)
-    pcm = await request.body()
+    declared = int(request.headers.get("content-length") or 0)
+    if declared > MAX_VOICE_BYTES:
+        raise HTTPException(413, "voice note too long (15 s max)")
+    pcm = bytearray()
+    async for chunk in request.stream():
+        pcm.extend(chunk)
+        if len(pcm) > MAX_VOICE_BYTES:
+            raise HTTPException(413, "voice note too long (15 s max)")
     from .stt import transcribe_pcm16
-    said = transcribe_pcm16(pcm)
+    said = await run_in_threadpool(transcribe_pcm16, bytes(pcm))
     if not said:
         return {"ok": False, "said": ""}
-    updated = bot.draft(t["id"], instruction=said)
+    updated = await run_in_threadpool(bot.draft, t["id"], said)
     return {"ok": True, "said": said, "drafts": updated["drafts"] if updated else []}
+
+
+if config.DEV_FAKE_TELEGRAM:
+    class DevMessage(BaseModel):
+        chat_id: int
+        text: str
+        name: str = "Anna"
+
+    @app.post("/dev/customer")
+    def dev_customer(body: DevMessage) -> dict:
+        """Play a customer writing to the bot (local development only)."""
+        bot.handle_update({"message": {"chat": {"id": body.chat_id}, "from": {"first_name": body.name},
+                                       "text": body.text}})
+        return {"ok": True}
+
+    class DevPair(BaseModel):
+        code: str
+        chat_id: int
+
+    @app.post("/dev/pair")
+    def dev_pair(body: DevPair) -> dict:
+        bot.handle_update({"message": {"chat": {"id": body.chat_id}, "from": {"first_name": "Owner"},
+                                       "text": f"/pair {body.code}"}})
+        return {"ok": True}

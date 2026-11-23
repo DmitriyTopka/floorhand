@@ -29,6 +29,9 @@ class Bot:
 
     # Telegram API
     def call(self, method: str, **params):
+        if config.DEV_FAKE_TELEGRAM:
+            print(f"[fake telegram] {method} {params.get('chat_id', '')}: {str(params.get('text', ''))[:80]}")
+            return {}
         r = self.http.post(f"{self.base}/{method}", json=params)
         data = r.json()
         if not data.get("ok"):
@@ -74,6 +77,12 @@ class Bot:
             return
         if text.startswith("/pair"):
             parts = text.split()
+            if not config.DEMO_ISOLATION and chat_id not in config.OWNER_CHAT_IDS:
+                self.send(chat_id, "Only the shop owner can pair glasses here.")
+                return
+            if not self.store.pair_attempt_allowed(chat_id):
+                self.send(chat_id, "Too many tries. Wait ten minutes and use the code on your glasses.")
+                return
             uid = self.store.confirm_pair(parts[1], chat_id) if len(parts) == 2 else None
             self.send(chat_id, "Glasses paired. Questions you send here will show up on them."
                       if uid else "That code did not match. Check the code on your glasses.")

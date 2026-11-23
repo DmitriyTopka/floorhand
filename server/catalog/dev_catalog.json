@@ -1,0 +1,4 @@
+{"products": [
+ {"code": "200413", "name": "Планетарний міксер ZELMER ZKR 1355", "name_en": "Zelmer ZKR 1355 stand mixer", "price_uah": 7123, "stock_status": "Not in stock in Kyiv, can be ordered (2-5 days)", "url": "https://tt.ua/uk/mikser-zelmer-zkr-1355", "category": "Kitchen", "specs": ["1300 W", "5 l bowl", "6 speeds"]},
+ {"code": "100001", "name": "Холодильник BOSCH KGN39VLEB", "name_en": "Bosch KGN39VLEB fridge", "price_uah": 24999, "stock_status": "In stock in Kyiv", "url": "https://tt.ua/uk/bosch-kgn39vleb", "category": "Fridges", "specs": ["No Frost", "203 cm", "368 l"]}
+]}

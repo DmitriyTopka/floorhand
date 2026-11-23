@@ -72,25 +72,51 @@ class Store:
         with _LOCK:
             return [dict(t) for t in self.state["tickets"] if t["status"] in ("waiting", "drafting")]
 
-    # pairing: glasses show a code, the shop owner sends /pair CODE to the bot
-    def pair_code_for(self, uid: str) -> str:
+    # pairing: glasses show a code, the shop owner sends /pair CODE to the bot.
+    # The device id is a 128-bit random key the glasses app creates itself, so
+    # it works as the device's secret; codes expire and attempts are limited.
+    CODE_TTL = 600
+    MAX_CODES = 500
+
+    def pair_code_for(self, device: str) -> str:
         with _LOCK:
-            for code, owner in self.state["pair_codes"].items():
-                if owner == uid:
+            now = time.time()
+            codes = self.state["pair_codes"]
+            for code in [c for c, v in codes.items() if now - v["at"] > self.CODE_TTL]:
+                codes.pop(code)
+            for code, v in codes.items():
+                if v["device"] == device:
                     return code
-            code = f"{secrets.randbelow(900000) + 100000}"
-            self.state["pair_codes"][code] = uid
+            if len(codes) >= self.MAX_CODES:
+                raise RuntimeError("too many pending pair codes")
+            while True:
+                code = f"{secrets.randbelow(900000) + 100000}"
+                if code not in codes:
+                    break
+            codes[code] = {"device": device, "at": now}
             self._save()
             return code
 
+    def pair_attempt_allowed(self, chat_id: int, limit: int = 5, window: int = 600) -> bool:
+        with _LOCK:
+            now = time.time()
+            tries = [t for t in self.state.setdefault("pair_tries", {}).get(str(chat_id), []) if now - t < window]
+            allowed = len(tries) < limit
+            tries.append(now)
+            self.state["pair_tries"][str(chat_id)] = tries
+            self._save()
+            return allowed
+
     def confirm_pair(self, code: str, owner_chat_id: int) -> str | None:
         with _LOCK:
-            uid = self.state["pair_codes"].pop(code, None)
-            if uid:
-                self.state["devices"][uid] = {"owner_chat_id": owner_chat_id, "paired_at": time.time()}
+            entry = self.state["pair_codes"].pop(code, None)
+            if not entry or time.time() - entry["at"] > self.CODE_TTL:
                 self._save()
-            return uid
+                return None
+            self.state["devices"][entry["device"]] = {"owner_chat_id": owner_chat_id, "paired_at": time.time()}
+            self._save()
+            return entry["device"]
 
-    def is_paired(self, uid: str) -> bool:
+    def is_paired(self, device: str) -> bool:
         with _LOCK:
-            return uid in self.state["devices"]
+            return device in self.state["devices"]

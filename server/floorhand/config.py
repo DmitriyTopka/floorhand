@@ -33,3 +33,10 @@ def llm_enabled() -> bool:
 # Public demo: whoever pairs the glasses sees only the questions they sent
 # themselves, so judges trying the bot never see each other's messages.
 DEMO_ISOLATION = os.environ.get("DEMO_ISOLATION", "1") == "1"
+
+# Local development only: no Telegram calls, plus a /dev/customer endpoint that
+# plays a customer. Never set on the public server.
+DEV_FAKE_TELEGRAM = os.environ.get("DEV_FAKE_TELEGRAM", "0") == "1"
+
+# Shop mode (DEMO_ISOLATION=0): only these Telegram chat ids may pair glasses.
+OWNER_CHAT_IDS = {int(x) for x in os.environ.get("OWNER_CHAT_IDS", "").split(",") if x.strip()}
