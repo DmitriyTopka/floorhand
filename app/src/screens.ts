@@ -11,6 +11,12 @@ function clip(text: string, lines: number): string {
   return flat.length <= max ? flat : flat.slice(0, max - 1).trimEnd() + '...'
 }
 
+// Telegram names can be decorative Unicode the glasses font can't draw.
+function displayName(name: string): string {
+  const plain = name.replace(/[^A-Za-z0-9\u0400-\u04FF .'-]/g, '').trim()
+  return plain || 'Customer'
+}
+
 function ago(s: number): string {
   return s < 60 ? `${s}s` : `${Math.floor(s / 60)}m`
 }
@@ -38,7 +44,7 @@ export function render(card: Card | null, draftIndex: number, status: string | n
   const t = card.ticket
   const i = Math.min(draftIndex, t.drafts.length - 1)
   const d = t.drafts[i]
-  const head = `${t.name} · ${ago(t.waiting_s)} · ${card.queue} waiting`
+  const head = `${displayName(t.name)} · ${ago(t.waiting_s)} · ${card.queue} waiting`
   const src = t.product ? `from catalog ${t.product.code}` : 'no product match'
   const draftHead = `Reply ${i + 1}/${t.drafts.length}${d.confident ? '' : ' · NOT SURE'} · ${src}`
   const foot = status ?? (d.confident ? 'tap send · swipe next · hold to edit' : 'tap hand off · swipe next · hold to edit')
