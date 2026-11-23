@@ -155,6 +155,10 @@ bridge.onEvenHubEvent(event => {
   if (pcm && recording) chunks.push(new Uint8Array(pcm))
   const type = typeOf(event.sysEvent) ?? typeOf(event.textEvent)
   if (type === null) return
+  if (type === OsEventTypeList.FOREGROUND_ENTER_EVENT) {
+    refresh()
+    return
+  }
   switch (type) {
     case OsEventTypeList.DOUBLE_CLICK_EVENT:
       bridge.shutDownPageContainer(1)
@@ -196,5 +200,13 @@ function deviceKey(): string {
   return key
 }
 uid = deviceKey()
-await refresh()
-window.setInterval(refresh, 2000)
+// Poll with a self-scheduling timer: a failed request (server restart, 502)
+// never stops the loop, and any input also triggers a refresh.
+async function loop() {
+  try {
+    await refresh()
+  } finally {
+    window.setTimeout(loop, 2000)
+  }
+}
+loop()

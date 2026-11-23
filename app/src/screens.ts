@@ -22,9 +22,9 @@ export function render(card: Card | null, draftIndex: number, status: string | n
   if (card.mode === 'pair') {
     return {
       head: 'Floorhand · pair your glasses',
-      question: 'In the shop bot on Telegram send:',
+      question: 'Send this to the shop bot on Telegram:',
       draft: `/pair ${card.code}`,
-      foot: 'double tap to exit',
+      foot: 'code works for 10 minutes · double tap to exit',
     }
   }
   if (card.mode === 'empty') {
