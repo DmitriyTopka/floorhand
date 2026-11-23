@@ -1,4 +1,7 @@
-"""Step 2: build eval/questions.json from tools/selection.json.
+"""Step 2: build eval/questions.json from the private selection file.
+
+The selection (keyed chat hashes and the hand-checked translations) is kept
+outside the repository; pass its path as the first argument.
 
 For each selected case the script finds, in the merged chat history:
   * the answer = first MANAGER message containing a_match[0], plus the next

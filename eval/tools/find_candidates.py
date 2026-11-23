@@ -13,7 +13,14 @@ PROD = re.compile(r"tt\.ua/|[Кк]од\s*\d{5,6}|\b[A-Z][A-Z0-9-]{3,}\b|\b(?:BOS
 
 
 def cid(chat_id):
-    return hashlib.sha1(str(chat_id).encode()).hexdigest()[:10]
+    """Keyed hash of a chat id. The key lives outside the repository
+    (FLOORHAND_EVAL_KEY), so the ids can't be recovered from published files."""
+    import hmac
+    import os
+    key = os.environ.get("FLOORHAND_EVAL_KEY")
+    if not key:
+        sys.exit("set FLOORHAND_EVAL_KEY (kept outside the repo) to run this script")
+    return hmac.new(key.encode(), str(chat_id).encode(), hashlib.sha256).hexdigest()[:12]
 
 
 def main(out):
