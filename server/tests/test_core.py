@@ -166,3 +166,12 @@ def test_evicted_code_number_is_never_reissued(tmp_path):
     s.pair_code_for("device-key-number-cccc-abcdef", "2.2.2.2")   # evicts a
     assert a in s.state["retired_codes"]
     assert s.confirm_pair(a, 1) is None                              # old number pairs nothing
+
+
+def test_global_rate_limit_on_new_codes(tmp_path):
+    s = Store(tmp_path)
+    s.NEW_CODES_PER_MINUTE = 3
+    for i in range(3):
+        s.pair_code_for(f"device-key-number-{i:04d}-abcdef", f"10.0.0.{i}")
+    with pytest.raises(Store.PairingBusy):
+        s.pair_code_for("device-key-number-9999-abcdef", "10.0.0.9")

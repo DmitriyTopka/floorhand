@@ -91,6 +91,7 @@ class Store:
     MAX_CODES = 500
 
     NEW_DEVICES_PER_IP = 20  # per CODE_TTL window
+    NEW_CODES_PER_MINUTE = 60  # global; also bounds the retired list to ~600
 
     class PairingBusy(Exception):
         pass
@@ -109,6 +110,9 @@ class Store:
             for code, v in codes.items():
                 if v["device"] == device:
                     return code
+            recent = [t for t in self.state.setdefault("code_times", []) if now - t < 60]
+            if len(recent) >= self.NEW_CODES_PER_MINUTE:
+                raise Store.PairingBusy("pairing is busy, try again in a minute")
             # One address (an IPv6 /64 counts as one) holds at most
             # NEW_DEVICES_PER_IP pending codes. When the table is full, the
             # oldest code of the address holding the most codes goes, so a
@@ -130,6 +134,7 @@ class Store:
             else:
                 raise Store.PairingBusy("pairing is busy, try again in a few minutes")
             codes[code] = {"device": device, "at": now, "net": net}
+            self.state["code_times"] = recent + [now]
             self._save()
             return code
 
