@@ -123,8 +123,6 @@ class Store:
                 heavy = max(counts, key=counts.get)
                 oldest = min((c for c, v in codes.items() if v.get("net", "") == heavy), key=lambda c: codes[c]["at"])
                 retired[oldest] = codes.pop(oldest)["at"]
-                while len(retired) > 5 * self.MAX_CODES:  # keep the code space mostly free
-                    retired.pop(min(retired, key=retired.get))
             for _ in range(100):
                 code = f"{secrets.randbelow(900000) + 100000}"
                 if code not in codes and code not in retired:
