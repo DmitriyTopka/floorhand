@@ -3,10 +3,17 @@
   "edition": "202601",
   "name": "Floorhand",
   "version": "0.1.0",
-  "min_app_version": "2.0.0",
+  "min_app_version": "2.2.10",
   "min_sdk_version": "0.0.16",
   "entrypoint": "index.html",
   "permissions": [
+    {
+      "name": "network",
+      "desc": "Talks to the shop's Floorhand server: fetches the waiting question and reply drafts, sends the chosen reply.",
+      "whitelist": [
+        "https://2-27-41-223.sslip.io"
+      ]
+    },
     {
       "name": "g2-microphone",
       "desc": "Short voice edits of a reply draft, sent to the shop's own server for transcription."
