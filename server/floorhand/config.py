@@ -23,6 +23,8 @@ CLAUDE_MODEL = os.environ.get("CLAUDE_MODEL", "claude-sonnet-5-5")
 SHOP_NAME = os.environ.get("SHOP_NAME", "TechnoTochka demo shop")
 DATA_DIR = Path(os.environ.get("DATA_DIR", "./data"))
 CATALOG_PATH = Path(os.environ.get("CATALOG_PATH", "./catalog/catalog.json"))
+# Shop rules copied from the shop's public pages (delivery, payment, warranty). Optional.
+POLICY_PATH = Path(os.environ.get("POLICY_PATH", str(CATALOG_PATH.parent / "shop_policy.md")))
 ALLOWED_ORIGINS = [o.strip() for o in os.environ.get("ALLOWED_ORIGINS", "http://localhost:5173").split(",") if o.strip()]
 WHISPER_MODEL = os.environ.get("WHISPER_MODEL", "small")
 

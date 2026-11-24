@@ -20,10 +20,17 @@ class Product:
     category: str = ""
     specs: list[str] = field(default_factory=list)
     name_en: str = ""
+    price_old_uah: float | None = None
+    delivery: str = ""
 
     def facts(self) -> str:
         price = f"{self.price_uah:,.0f} UAH".replace(",", " ") if self.price_uah else "price not listed"
-        lines = [f"{self.name_en or self.name} (code {self.code})", f"Price: {price}", f"Stock: {self.stock_status}"]
+        lines = [f"{self.name_en or self.name} (code {self.code})", f"Price: {price}"]
+        if self.price_old_uah and self.price_uah and self.price_old_uah > self.price_uah:
+            lines.append(f"Old price, crossed out on the site: {self.price_old_uah:,.0f} UAH".replace(",", " "))
+        lines.append(f"Stock: {self.stock_status}")
+        if self.delivery:
+            lines.append(f"Site label: {self.delivery}")
         lines += [f"- {s}" for s in self.specs[:5]]
         lines.append(f"Link: {self.url}")
         return "\n".join(lines)
@@ -45,6 +52,17 @@ def stock_en(status: str) -> str:
     return _STOCK_EN.get(status.strip().lower(), status)
 
 
+def delivery_en(label: str | None) -> str:
+    """'На складі' -> 'In the warehouse', 'Доставка 1-2 дні' -> 'Delivery 1-2 days'."""
+    if not label:
+        return ""
+    label = label.strip()
+    if label.lower() == "на складі":
+        return "In the warehouse"
+    m = re.match(r"доставка\s+(\d+\s*-\s*\d+)\s+\w+", label, re.IGNORECASE)
+    return f"Delivery {m.group(1)} days" if m else label
+
+
 class Catalog:
     def __init__(self, products: list[Product]):
         self.products = products
@@ -62,6 +80,7 @@ class Catalog:
                 code=str(it.get("code", "")), name=it.get("name", ""), name_en=it.get("name_en", ""),
                 price_uah=it.get("price_uah"), stock_status=stock_en(it.get("stock_status", "unknown")),
                 url=it.get("url", ""), category=it.get("category", ""), specs=list(it.get("specs", [])),
+                price_old_uah=it.get("price_old_uah"), delivery=delivery_en(it.get("delivery_label")),
             ))
         return cls(products)
 

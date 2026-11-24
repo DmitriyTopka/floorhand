@@ -44,24 +44,40 @@ _SCHEMA = {
 _SYSTEM = """You draft replies for a shop assistant who reads them on smart glasses and sends one with a tap.
 Write exactly three different replies to the customer's last message.
 Rules:
-- Use only the facts in PRODUCT FACTS. Never invent a price, stock status, delivery date or spec.
+- Use only the facts in PRODUCT FACTS and SHOP POLICY. Never invent a price, stock status, delivery date or spec.
+- SHOP POLICY covers every product; use it for delivery, carrying, payment, installments, warranty and returns.
 - If the facts do not answer the question, say a colleague will confirm, and set confident to false.
 - Each reply at most 160 characters, plain text, no emoji, the customer's language.
 - Reply 1: direct answer. Reply 2: answer plus a helpful next step. Reply 3: short and warm.
 - confident is true only when the reply is fully backed by the facts."""
 
 
+_policy_cache: dict[str, tuple[str, set[int]]] = {}
+
+
+def policy() -> tuple[str, set[int]]:
+    """Shop policy text and the UAH amounts it names (fees, per-floor prices)."""
+    key = str(config.POLICY_PATH)
+    if key not in _policy_cache:
+        text = config.POLICY_PATH.read_text(encoding="utf-8") if config.POLICY_PATH.exists() else ""
+        amounts = {int(re.sub(r"\D", "", n)) for n in _NUM.findall(text)}
+        _policy_cache[key] = (text, amounts)
+    return _policy_cache[key]
+
+
 def _price_ok(text: str, product: Product | None) -> bool:
-    """Every price mentioned in UAH must equal the catalog price."""
+    """Every UAH amount must be the catalog price, the crossed-out price or an amount from the shop policy."""
     found = _NUM.findall(text)
     if not found:
         return True
-    if not product or not product.price_uah:
-        return False
-    want = int(round(product.price_uah))
+    allowed = set(policy()[1])
+    if product and product.price_uah:
+        allowed.add(int(round(product.price_uah)))
+    if product and product.price_old_uah:
+        allowed.add(int(round(product.price_old_uah)))
     for raw in found:
         digits = re.sub(r"\D", "", raw)
-        if digits and int(digits) != want:
+        if digits and int(digits) not in allowed:
             return False
     return True
 
@@ -98,7 +114,8 @@ def llm_drafts(question: str, product: Product | None, history: list[str], instr
     client = anthropic.Anthropic(api_key=config.ANTHROPIC_API_KEY)
     facts = product.facts() if product else "No matching product found in the catalog."
     convo = "\n".join(history[-6:])
-    user = f"SHOP: {config.SHOP_NAME}\nPRODUCT FACTS:\n{facts}\n\nCONVERSATION:\n{convo}\n\nCUSTOMER'S LAST MESSAGE:\n{question}"
+    rules = policy()[0] or "No shop policy loaded."
+    user = f"SHOP: {config.SHOP_NAME}\nSHOP POLICY:\n{rules}\n\nPRODUCT FACTS:\n{facts}\n\nCONVERSATION:\n{convo}\n\nCUSTOMER'S LAST MESSAGE:\n{question}"
     if instruction:
         user += f"\n\nTHE ASSISTANT SAID, apply this to all three replies: {instruction}"
     resp = client.messages.create(

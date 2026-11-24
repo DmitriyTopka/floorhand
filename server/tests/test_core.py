@@ -188,3 +188,15 @@ def test_price_check_does_not_glue_model_digits_to_price():
     assert not _price_ok("RB38C679ES9. 29 999 UAH", fridge)
     assert not _price_ok("Now 31 999 UAH, was 33 704 UAH", fridge)
     assert not _price_ok("only 999 UAH", fridge)
+
+
+def test_policy_amounts_and_old_price_pass_the_price_check():
+    from floorhand.catalog import delivery_en
+    from floorhand.drafts import _price_ok, policy
+    text, amounts = policy()
+    assert "Pickup points" in text and {20, 150, 1000} <= amounts
+    p = Product(code="1", name="x", price_uah=31499, price_old_uah=33704, stock_status="In stock", url="u")
+    assert _price_ok("31 499 UAH now, was 33 704 UAH. Carrying up is 150 UAH per floor.", p)
+    assert not _price_ok("31 499 UAH now, was 35 000 UAH.", p)
+    assert "Old price" in p.facts()
+    assert delivery_en("На складі") == "In the warehouse" and delivery_en("Доставка 1-2 дні") == "Delivery 1-2 days"
