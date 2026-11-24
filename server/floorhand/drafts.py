@@ -65,9 +65,13 @@ def policy() -> tuple[str, set[int]]:
     return _policy_cache[key]
 
 
-_OLD_CTX = re.compile(r"(was|old|crossed|before|стара|було|раніше)\W*((price|ціна)\W*)?$", re.IGNORECASE)
-_POLICY_CTX = re.compile(r"floor|поверх|envelope|конверт|fee|комісі|prepay|передоплат|cash on delivery|післяплат|"
-                         r"installment|payments|credit|кредит|розстроч|minimum|from \d|over \d|up to|до \d", re.IGNORECASE)
+_OLD_CTX = re.compile(r"\b(was|old|crossed|before|стара|було|раніше)\b\W*((price|ціна)\b\W*)?$", re.IGNORECASE)
+_POLICY_CTX = re.compile(r"(per |a |the |for )?(floor|поверх|envelope|конверт|fee|комісі|prepay|передоплат|cash on delivery|післяплат|"
+                         r"installment|payments|credit|кредит|розстроч|minimum|from \d|over \d|up to|до \d)", re.IGNORECASE)
+
+
+# Words that present the number as what the item costs; a policy amount after them fails.
+_PRICE_CLAIM = re.compile(r"\b(costs?|priced?|price is|is|for|at|only|коштує|ціна|за)\b\W*$", re.IGNORECASE)
 
 
 def _price_ok(text: str, product: Product | None) -> bool:
@@ -86,9 +90,14 @@ def _price_ok(text: str, product: Product | None) -> bool:
         before = text[max(0, m.start() - 25):m.start()]
         if old and price and old > price and value == old and _OLD_CTX.search(before.rstrip(" (:,")):
             continue
-        around = text[max(0, m.start() - 40):m.end() + 25]
-        if value in amounts and _POLICY_CTX.search(around):
-            continue
+        if value in amounts:
+            # "150 UAH per floor": the policy word follows right after the amount
+            after_ok = _POLICY_CTX.match(text[m.end():m.end() + 14].lstrip(" ,.(-"))
+            # "a 2% fee and 20 UAH": the policy word comes before, and nothing says it is the item's price
+            before_ok = (_POLICY_CTX.search(text[max(0, m.start() - 25):m.start()])
+                         and not _PRICE_CLAIM.search(text[max(0, m.start() - 14):m.start()]))
+            if after_ok or before_ok:
+                continue
         return False
     return True
 

@@ -212,3 +212,14 @@ def test_policy_amount_cannot_pass_as_item_price():
     assert _price_ok("You pay the carrier plus a 2% fee and 20 UAH for the envelope.", p)
     cheap = Product(code="2", name="y", price_uah=500, price_old_uah=400, stock_status="In stock", url="u")
     assert not _price_ok("500 UAH, was 400 UAH", cheap)
+
+
+def test_price_guard_context_is_tight():
+    from floorhand.drafts import _price_ok
+    p = Product(code="1", name="x", price_uah=31499, price_old_uah=33704, stock_status="In stock", url="u")
+    assert not _price_ok("We sold 33 704 UAH worth.", p)
+    assert not _price_ok("I told you 33 704 UAH.", p)
+    assert not _price_ok("Pay in installments: it costs 1000 UAH.", p)
+    assert not _price_ok("The fridge is 150 UAH, carrying is per floor.", p)
+    assert _price_ok("Carrying a fridge over 1 m is 150 UAH per floor.", p)
+    assert _price_ok("Cash on delivery over 1000 UAH needs a 10% prepayment.", p)
