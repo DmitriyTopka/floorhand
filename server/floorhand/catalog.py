@@ -63,10 +63,27 @@ def delivery_en(label: str | None) -> str:
     return f"Delivery {m.group(1)} days" if m else label
 
 
+# Brands a customer may name that we don't sell; catalog brands are added at load time.
+_BRANDS = {"aeg", "beko", "bosch", "braun", "candy", "delonghi", "dyson", "electrolux", "gorenje", "haier",
+           "hisense", "hotpoint", "indesit", "karcher", "lg", "miele", "panasonic", "philips", "rowenta",
+           "samsung", "sharp", "siemens", "sony", "tcl", "tefal", "whirlpool", "xiaomi", "zanussi", "zelmer"}
+_MODEL = re.compile(r"^(?=.*\d)(?=.*[^\W\d_])[\w-]{3,}$")
+
+
 class Catalog:
     def __init__(self, products: list[Product]):
         self.products = products
         self.by_code = {p.code: p for p in products}
+        self.brands = _BRANDS | {m.group().lower() for p in products if (m := re.search(r"\b[A-Z]{3,}\b", p.name))}
+
+    def names_other_product(self, text: str, product: Product) -> bool:
+        """True if the message names a brand or model code that is not this product's."""
+        own = _tokens(f"{product.name} {product.name_en} {product.code}")
+        for w in _WORD.findall(text):
+            lw = w.lower()
+            if lw not in own and (lw in self.brands or _MODEL.match(w)):
+                return True
+        return False
 
     @classmethod
     def load(cls, path: Path) -> "Catalog":

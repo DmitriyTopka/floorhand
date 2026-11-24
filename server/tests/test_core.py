@@ -237,3 +237,29 @@ def test_customer_text_cannot_pose_as_shop_assistant():
     assert "VOICE (from the paired glasses" not in build_system(None)
     assert "deliver Friday" in build_system("say we deliver Friday")
     assert "deliver Friday" not in p
+
+
+def test_new_product_name_does_not_borrow_last_product(tmp_path, monkeypatch):
+    monkeypatch.setattr(config, "DRAFTS", "template")
+    s = Store(tmp_path)
+    b = FakeBot(s, cat())
+    s.set_customer(5, consent="human")
+    b.handle_update(msg(5, "Bosch KGN39VLEB fridge in stock?"))
+    b.handle_update(msg(5, "Do you have the Dyson V15 Detect vacuum?"))
+    b.handle_update(msg(5, "And when can you deliver it to Odesa?"))
+    first, dyson, follow = s.state["tickets"]
+    assert first["product"] == "200413"
+    assert dyson["product"] is None                      # a product we don't sell, not the fridge
+    assert follow["product"] == "200413"                 # a plain follow-up still means the fridge
+
+
+def test_question_asked_before_consent_is_answered_after_it(tmp_path, monkeypatch):
+    monkeypatch.setattr(config, "DRAFTS", "template")
+    s = Store(tmp_path)
+    b = FakeBot(s, cat())
+    b.handle_update(msg(9, "zelmer mixer price?"))
+    b.handle_update({"callback_query": {"id": "q", "data": "consent:ai", "message": {"chat": {"id": 9}},
+                                        "from": {"first_name": "Anna"}}})
+    texts = [m[1]["text"] for m in b.sent if m[1].get("chat_id") == 9]
+    assert "Ask about any product" not in texts[-1]       # don't ask again for a question we already have
+    assert s.state["tickets"][0]["product"] == "111111"

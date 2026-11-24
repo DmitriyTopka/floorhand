@@ -16,6 +16,7 @@ CONSENT_TEXT = (
 )
 WELCOME_HUMAN = "Got it, only a person will read and answer your messages. Ask away!"
 WELCOME_AI = "Thanks! Ask about any product: price, stock, delivery."
+WELCOME_PENDING = "Thanks! We're looking at your question now."
 
 
 class Bot:
@@ -56,8 +57,11 @@ class Bot:
             if choice in ("ai", "human"):
                 self.store.set_customer(chat_id, consent=choice, consent_at=time.time())
                 self.call("answerCallbackQuery", callback_query_id=q["id"])
-                self.send(chat_id, WELCOME_AI if choice == "ai" else WELCOME_HUMAN)
                 pending = self.store.customer(chat_id).get("pending")
+                if pending:
+                    self.send(chat_id, WELCOME_PENDING)
+                else:
+                    self.send(chat_id, WELCOME_AI if choice == "ai" else WELCOME_HUMAN)
                 if pending:
                     self.store.set_customer(chat_id, pending=None)
                     self.new_question(chat_id, q["from"].get("first_name", "Customer"), pending)
@@ -118,6 +122,8 @@ class Bot:
                 product, _score = self.catalog.match(line)
                 if product:
                     break
+            if product and self.catalog.names_other_product(t["text"], product):
+                product = None  # they asked about something else we don't have; don't answer for the old item
         use_ai = self.store.customer(t["chat_id"]).get("consent") == "ai"
         started = time.time()
         drafts, mode = make_drafts(t["text"], product, self.history(t["chat_id"], ticket_id), use_ai, instruction)
