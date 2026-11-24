@@ -65,20 +65,31 @@ def policy() -> tuple[str, set[int]]:
     return _policy_cache[key]
 
 
+_OLD_CTX = re.compile(r"(was|old|crossed|before|стара|було|раніше)\W*((price|ціна)\W*)?$", re.IGNORECASE)
+_POLICY_CTX = re.compile(r"floor|поверх|envelope|конверт|fee|комісі|prepay|передоплат|cash on delivery|післяплат|"
+                         r"installment|payments|credit|кредит|розстроч|minimum|from \d|over \d|up to|до \d", re.IGNORECASE)
+
+
 def _price_ok(text: str, product: Product | None) -> bool:
-    """Every UAH amount must be the catalog price, the crossed-out price or an amount from the shop policy."""
-    found = _NUM.findall(text)
-    if not found:
-        return True
-    allowed = set(policy()[1])
-    if product and product.price_uah:
-        allowed.add(int(round(product.price_uah)))
-    if product and product.price_old_uah:
-        allowed.add(int(round(product.price_old_uah)))
-    for raw in found:
-        digits = re.sub(r"\D", "", raw)
-        if digits and int(digits) not in allowed:
-            return False
+    """Every UAH amount must be one of:
+    - the catalog price;
+    - the crossed-out price, only when it is higher and the words just before say "was" or "old";
+    - an amount from the shop policy (per-floor price, fee, credit limit), only next to that kind of wording.
+    Anything else, a price the model made up or a policy amount passed off as the item's price, fails."""
+    price = int(round(product.price_uah)) if product and product.price_uah else None
+    old = int(round(product.price_old_uah)) if product and product.price_old_uah else None
+    amounts = policy()[1]
+    for m in _NUM.finditer(text):
+        value = int(re.sub(r"\D", "", m.group(1)))
+        if value == price:
+            continue
+        before = text[max(0, m.start() - 25):m.start()]
+        if old and price and old > price and value == old and _OLD_CTX.search(before.rstrip(" (:,")):
+            continue
+        around = text[max(0, m.start() - 40):m.end() + 25]
+        if value in amounts and _POLICY_CTX.search(around):
+            continue
+        return False
     return True
 
 

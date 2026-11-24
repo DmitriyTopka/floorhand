@@ -200,3 +200,15 @@ def test_policy_amounts_and_old_price_pass_the_price_check():
     assert not _price_ok("31 499 UAH now, was 35 000 UAH.", p)
     assert "Old price" in p.facts()
     assert delivery_en("На складі") == "In the warehouse" and delivery_en("Доставка 1-2 дні") == "Delivery 1-2 days"
+
+
+def test_policy_amount_cannot_pass_as_item_price():
+    from floorhand.drafts import _price_ok
+    p = Product(code="1", name="x", price_uah=31499, price_old_uah=33704, stock_status="In stock", url="u")
+    assert not _price_ok("This fridge is 1000 UAH.", p)
+    assert not _price_ok("It costs 150 UAH.", p)
+    assert not _price_ok("Today only 33 704 UAH.", p)
+    assert _price_ok("31 499 UAH (was 33 704 UAH)", p)
+    assert _price_ok("You pay the carrier plus a 2% fee and 20 UAH for the envelope.", p)
+    cheap = Product(code="2", name="y", price_uah=500, price_old_uah=400, stock_status="In stock", url="u")
+    assert not _price_ok("500 UAH, was 400 UAH", cheap)
