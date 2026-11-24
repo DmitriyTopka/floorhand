@@ -10,4 +10,4 @@ Things we missed in the APIs we used, collected during build week (23-29 Nov 202
 
 ## Telegram Bot API
 
-4. (to be filled)
+4. A longer "someone is answering" status for bots. `sendChatAction` with `typing` fades after 5 seconds, but a human-approved reply takes 10 to 60 seconds: drafting, a glance, a tap. The customer sees silence in between and may write again or leave. A status the bot can hold until it replies (or until a timeout it sets) would tell the customer a person is on it.

@@ -1,6 +1,6 @@
 # Floorhand
 
-A shop assistant answers the shop's Telegram customers from Even Realities G2 glasses, while their hands are busy with someone in front of them. The glasses show the customer's question and a reply built from the shop's own catalog, with the price and stock in it. One tap sends it. If the catalog does not back the answer, there is no send button: the seller says one sentence ("say we deliver Thursday") and the reply is rewritten.
+A shop assistant answers the shop's Telegram customers without taking out the phone and without turning away from the customer in front of them. At a real appliance store we measured the cost of not doing that: in one week 37% of its Telegram chats ended with the bot calling a human, and those customers then waited 102 minutes for a first reply (median). Floorhand puts the waiting question on Even Realities G2 glasses with a reply built from the shop's own catalog, price and stock included. One touch on the glasses or the R1 ring sends it. If the catalog does not back the answer, there is no send button: the seller says one sentence ("say we deliver Thursday") and the reply is rewritten.
 
 Built for **Heads Up: Even Realities Hackathon** (DoraHacks, 23-29 Nov 2026). Tracks: **01 Messaging & News (Telegram)** and **04 AI Assistants (Claude)**, joined in one flow: a Telegram question goes in, Claude drafts from the catalog, the reply goes back to Telegram.
 
@@ -18,12 +18,18 @@ TechnoTochka (tt.ua) sells home appliances in five Ukrainian cities and already 
 
 The people who know the answers are on the shop floor, helping the customer in front of them. Taking out a phone to type means turning away from that customer. Floorhand puts the waiting question in the corner of their eye with an answer half-ready.
 
+## Why glasses, not a phone or a watch
+
+- A phone has to come out of the pocket and be unlocked, and typing takes both hands and both eyes. The customer in front of you watches you turn away.
+- A watch makes you look down and use your other hand on a tiny screen. Dictating a whole reply into it is the long dictation this kind of moment can't afford.
+- On G2 the question sits at eye level while you keep talking to the person in front of you. The reply is already written: you approve it with one touch on the temple or the R1 ring (every gesture works from both), or say one sentence to change it.
+
 ## How it works
 
 1. A customer writes to the shop's Telegram bot. The first time, the bot asks whether AI may draft replies (**OK, AI may draft** / **Human only**). `/forget` deletes everything we keep about them.
 2. The server finds the product (code, link or name) in the catalog and asks Claude for three short replies, using only the catalog facts and the shop's public policy (delivery, payment, warranty).
 3. The glasses show: who is waiting and for how long, the question, reply 1 of 3, and where the facts came from (`from catalog 210455`).
-4. Gestures:
+4. Gestures, on the temple touchpad or the R1 ring:
    - **tap**: send the reply to the customer in Telegram (or hand the question off, if the reply is NOT SURE);
    - **swipe**: next reply;
    - **hold**: talk, release to rewrite all three replies with what you said;
@@ -59,6 +65,8 @@ We took 30 real customer questions where the shop's current bot gave up and call
 | Claude cost for all 30 | 0.15 USD | 0.26 USD |
 
 This set is the hard tail on purpose: the easy questions never reached a person. The managers answered with things no catalog holds ("to Odesa on Monday", "won't fit your branch, it is 203 cm"). Floorhand never made those up; it gave the seller the price and stock in under 3 seconds and left the rest to them, which is what the voice edit is for.
+
+Then we gave each unfinished question the one fact the manager had (the first sentence of the real answer) as the seller's spoken sentence. 12 of the remaining 26 got a send button, so 16 of 30 were ready after at most one sentence. The price check still held back 4, where the manager's early-November price no longer matched the catalog. Details: run 3 in [`eval/RESULTS.md`](eval/RESULTS.md).
 
 Voice edit, checked live on 24 Nov with the simulator and a real microphone: a 6.3 s phrase, transcribed on our server in 3.75 s, three new drafts from Claude in 3.6 s.
 

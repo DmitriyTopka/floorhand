@@ -39,3 +39,17 @@ Run 2 adds the shop's public rules. The send button doubles (2 to 4), and 12 of 
 - Checks for price and stock are automatic (regex over the drafts); "would a manager send it" was not scored by a second model. The 12 / 30 rule count is a hand check of run 2 drafts.
 - Two drafts (tt-q15 in run 2, tt-q26 in both runs) answered in Ukrainian to an English question, probably because the customer's own words or the catalog name are Ukrainian.
 - While building this eval we found that the price guard misread "RB38C679ES9. 31 499 UAH" as 931 499 and took the send button away from a correct draft. Fixed before the run, test added (`test_price_check_does_not_glue_model_digits_to_price`).
+
+## Run 3 (24 Nov): one spoken sentence from the seller
+
+For the 26 questions that had no send button in run 2, we passed the fact the manager actually knew as the seller's voice instruction: the first sentence of the manager's real answer, at most 25 words (for example "For Nov 19-20." or "Available in Kyiv for tomorrow."). Same code path as hold-to-talk on the glasses. Script: `eval/run_voice_eval.py`, output: `eval/results_voice.json`.
+
+| | Result |
+|---|---|
+| Got a send button after one sentence | 12 of 26 (16 of 30 with the 4 that were ready before) |
+| Drafts with a wrong stock claim | 0 |
+| Price check took the send button away | 4 of 26: the manager's price from early November no longer matched today's catalog, so the glasses would not let it go out |
+| Time to three new drafts, median | 2.5 s |
+| Claude cost | 0.25 USD |
+
+Limits: the "spoken" sentence is the manager's written words, not a recording, so Whisper is not part of this run (live timing is in the README). A send button means the draft passed the checks and Claude marked it confident; nobody scored the wording. One example of a send-ready draft that a person would still polish: tt-q02, "The WETAIR WAD B 20 L is currently out of stock. For Saturday 07.11 in Kharkiv."

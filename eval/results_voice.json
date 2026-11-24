@@ -1,0 +1,668 @@
+{
+ "model": "claude-sonnet-5-5",
+ "ran_at": "2026-11-24T13:10:21+0000",
+ "price_assumption_usd_per_mtok": [
+  3.0,
+  15.0
+ ],
+ "usage": {
+  "in": 57197,
+  "out": 5217,
+  "calls": 26
+ },
+ "usd_estimate": 0.2498,
+ "questions": 26,
+ "ready_after_one_sentence": 12,
+ "rows": [
+  {
+   "id": "tt-q01",
+   "type": "availability",
+   "question_en": "https://tt.ua/uk/holodilnik-samsung-rb38c679es9 Do you have 2 in stock?",
+   "seller_says": "Samsung RB38C679ES9 fridge, 31,248 UAH, in stock.",
+   "mode": "ai",
+   "seconds": 8.73,
+   "drafts": [
+    {
+     "text": "The Samsung RB38C679ES9 is in stock at 31,248 UAH. The site shows last units, so a colleague will confirm that 2 are available.",
+     "confident": false
+    },
+    {
+     "text": "It is in stock at 31,248 UAH, but only last units are left. A colleague will confirm 2 pieces. Would you like pickup or delivery for them?",
+     "confident": false
+    },
+    {
+     "text": "Yes, it's in stock at 31,248 UAH! Stock is low, so a colleague will confirm we have 2 for you.",
+     "confident": false
+    }
+   ],
+   "send_button": false,
+   "price_ok": false,
+   "stock_ok": true
+  },
+  {
+   "id": "tt-q02",
+   "type": "availability",
+   "question_en": "Is the WETAIR WAD B 20 L dehumidifier in stock in Kharkiv?",
+   "seller_says": "For Saturday 07.11 in Kharkiv.",
+   "mode": "ai",
+   "seconds": 2.36,
+   "drafts": [
+    {
+     "text": "The WETAIR WAD B 20 L is currently out of stock. For Saturday 07.11 in Kharkiv.",
+     "confident": true
+    },
+    {
+     "text": "It is out of stock right now. For Saturday 07.11 in Kharkiv. Want me to note your contact so a colleague can follow up on the order?",
+     "confident": true
+    },
+    {
+     "text": "Sorry, it is out of stock at the moment. For Saturday 07.11 in Kharkiv. Happy to help with anything else!",
+     "confident": true
+    }
+   ],
+   "send_button": true,
+   "price_ok": true,
+   "stock_ok": true
+  },
+  {
+   "id": "tt-q03",
+   "type": "spec",
+   "question_en": "Whirlpool WHD2 6472 X4E two-door fridge. I want the freezer on top and white color.",
+   "seller_says": "In white we only have short ones, up to 150 cm.",
+   "mode": "ai",
+   "seconds": 2.55,
+   "drafts": [
+    {
+     "text": "The Whirlpool WHD2 6472 X4E has the freezer on top and is in stock, 35 728 UAH. In white we only have short ones, up to 150 cm, so this 187 cm model is not available in white.",
+     "confident": false
+    },
+    {
+     "text": "Freezer on top, yes. But in white we only have short ones, up to 150 cm. Would you like to see a white model up to 150 cm, or this 187 cm Whirlpool in its current color?",
+     "confident": false
+    },
+    {
+     "text": "Freezer on top, yes! In white we only have short ones, up to 150 cm. Happy to show you options.",
+     "confident": true
+    }
+   ],
+   "send_button": false,
+   "price_ok": true,
+   "stock_ok": true
+  },
+  {
+   "id": "tt-q04",
+   "type": "spec",
+   "question_en": "https://tt.ua/uk/holodilnik-gorenje-nrki517e42-vstr This one is both No Frost and has an inverter compressor, right?",
+   "seller_says": "Yes, the GORENJE NRKI517E42 has No Frost and an inverter compressor.",
+   "mode": "ai",
+   "seconds": 2.49,
+   "drafts": [
+    {
+     "text": "Yes, the GORENJE NRKI517E42 has No Frost and an inverter compressor. Please note that it is currently out of stock.",
+     "confident": true
+    },
+    {
+     "text": "Yes, it has No Frost and an inverter compressor. It is out of stock right now, so a colleague can confirm when it will be available if you like.",
+     "confident": false
+    },
+    {
+     "text": "Yes, you are right: No Frost and an inverter compressor. Happy to help with anything else!",
+     "confident": true
+    }
+   ],
+   "send_button": true,
+   "price_ok": true,
+   "stock_ok": true
+  },
+  {
+   "id": "tt-q07",
+   "type": "delivery",
+   "question_en": "When will it ship? Do you give a warranty card?",
+   "seller_says": "We can ship the Zelmer ZKR 1350 mixer on November 5 by Nova Poshta, price 5,130 UAH.",
+   "mode": "ai",
+   "seconds": 2.58,
+   "drafts": [
+    {
+     "text": "We can ship the Zelmer ZKR 1350 mixer on November 5 by Nova Poshta, price 5,130 UAH. Which warranty it has, a colleague will confirm. Every item comes with a warranty card.",
+     "confident": false
+    },
+    {
+     "text": "It ships November 5 by Nova Poshta, 5,130 UAH. Every item comes with a filled warranty card; a colleague will confirm if it is the manufacturer's or the shop's. Shall I note your order?",
+     "confident": false
+    },
+    {
+     "text": "Shipping is November 5 by Nova Poshta at 5,130 UAH, and yes, a filled warranty card comes with every item. A colleague will confirm the warranty type.",
+     "confident": false
+    }
+   ],
+   "send_button": false,
+   "price_ok": false,
+   "stock_ok": true
+  },
+  {
+   "id": "tt-q08",
+   "type": "availability",
+   "question_en": "Do you have 5 units of this one in stock?",
+   "seller_says": "Lead time right now is 3 to 5 business days.",
+   "mode": "ai",
+   "seconds": 2.5,
+   "drafts": [
+    {
+     "text": "I can't see this item's stock in our catalog, so I can't confirm 5 units yet. Lead time right now is 3 to 5 business days. A colleague will confirm the stock.",
+     "confident": false
+    },
+    {
+     "text": "Lead time right now is 3 to 5 business days. A colleague will confirm whether 5 units are in stock. Which city should we deliver to?",
+     "confident": false
+    },
+    {
+     "text": "Lead time is 3 to 5 business days. A colleague will confirm the stock of 5 units shortly, thank you for waiting!",
+     "confident": false
+    }
+   ],
+   "send_button": false,
+   "price_ok": true,
+   "stock_ok": true
+  },
+  {
+   "id": "tt-q09",
+   "type": "delivery",
+   "question_en": "I've picked the washer but I'm not ordering yet, I need to know the delivery date. LG F4Y2VSGWE washing machine. Your site says city delivery is 450 UAH.",
+   "seller_says": "Delivery on Thursday 05.11.2026.",
+   "mode": "ai",
+   "seconds": 2.69,
+   "drafts": [
+    {
+     "text": "Delivery of the LG F4Y2VSGWE is on Thursday 05.11.2026. The 450 UAH delivery price you mention is not something I can confirm here; the price is on the product page.",
+     "confident": false
+    },
+    {
+     "text": "Delivery on Thursday 05.11.2026. Tell me your city and I can go over the delivery options; a colleague can confirm the exact price shown on the product page.",
+     "confident": false
+    },
+    {
+     "text": "Good choice! Delivery is on Thursday 05.11.2026. Shall I help you with the order whenever you are ready?",
+     "confident": true
+    }
+   ],
+   "send_button": false,
+   "price_ok": false,
+   "stock_ok": true
+  },
+  {
+   "id": "tt-q10",
+   "type": "price",
+   "question_en": "I'd like to buy it in installments with monobank. I saw that with 3 payments the price stays the same as on the site now. Is that right?",
+   "seller_says": "That's right, 3 months at the red-tag price, 47,284 UAH.",
+   "mode": "ai",
+   "seconds": 2.11,
+   "drafts": [
+    {
+     "text": "Yes, that's right: with 3 monobank payments you get the red-tag price of 47,284 UAH. The first payment is made at purchase.",
+     "confident": false
+    },
+    {
+     "text": "Yes, 3 months at the red-tag price, 47,284 UAH. The first payment is at purchase. Would you like me to help you set up the monobank installment?",
+     "confident": false
+    },
+    {
+     "text": "Yes, you're right! 3 months with monobank at the red-tag price, 47,284 UAH.",
+     "confident": false
+    }
+   ],
+   "send_button": false,
+   "price_ok": false,
+   "stock_ok": true
+  },
+  {
+   "id": "tt-q11",
+   "type": "availability",
+   "question_en": "Hi, will this hob be back in stock? Code 178401.",
+   "seller_says": "No deliveries or dates for this model yet.",
+   "mode": "ai",
+   "seconds": 2.37,
+   "drafts": [
+    {
+     "text": "Hi! This hob is in stock now, last units. There are no deliveries or dates for this model yet, so we can't say when more will arrive.",
+     "confident": true
+    },
+    {
+     "text": "Hi! It is in stock now, last units, but no deliveries or dates for this model yet. If you want it, I can help you order it today.",
+     "confident": true
+    },
+    {
+     "text": "Hi! Right now it's in stock, last units. No deliveries or dates for this model yet. Happy to help you get one!",
+     "confident": true
+    }
+   ],
+   "send_button": true,
+   "price_ok": true,
+   "stock_ok": true
+  },
+  {
+   "id": "tt-q12",
+   "type": "price",
+   "question_en": "Hi. Why does station 215859 get more expensive in the cart as soon as I pick installments?",
+   "seller_says": "The discounted price applies when you pay the full amount at once.",
+   "mode": "ai",
+   "seconds": 2.46,
+   "drafts": [
+    {
+     "text": "The discounted price applies when you pay the full amount at once. With installments the price can differ. A manager will confirm the exact price for your number of payments.",
+     "confident": false
+    },
+    {
+     "text": "The discounted price applies when you pay the full amount at once. Tell me how many payments you want and a colleague will confirm the exact installment price for you.",
+     "confident": false
+    },
+    {
+     "text": "Hi! The discounted price applies only when you pay the full amount at once. A colleague will confirm the installment price.",
+     "confident": false
+    }
+   ],
+   "send_button": false,
+   "price_ok": true,
+   "stock_ok": true
+  },
+  {
+   "id": "tt-q13",
+   "type": "price",
+   "question_en": "Hi. Is the built-in HOTPOINT-ARISTON HI 5020 WEF dishwasher in stock, and is the site price current? Does PrivatBank 3-payment installment apply?",
+   "seller_says": "Available in Kyiv for tomorrow.",
+   "mode": "ai",
+   "seconds": 2.84,
+   "drafts": [
+    {
+     "text": "Yes, the HI 5020 WEF is in stock, available in Kyiv for tomorrow. The site price is 18 648 UAH, though it can be re-confirmed. A colleague will confirm the 3-payment promo price.",
+     "confident": false
+    },
+    {
+     "text": "It is in stock and available in Kyiv for tomorrow. Price on site: 18 648 UAH. PrivatBank offers 3 payments from 300 UAH; a colleague will confirm if the promo price applies.",
+     "confident": false
+    },
+    {
+     "text": "Yes, in stock and available in Kyiv for tomorrow! PrivatBank 3 payments is possible; a colleague will confirm the price for it.",
+     "confident": false
+    }
+   ],
+   "send_button": false,
+   "price_ok": true,
+   "stock_ok": true
+  },
+  {
+   "id": "tt-q14",
+   "type": "spec",
+   "question_en": "[photo caption] Does it come with LPG nozzles?",
+   "seller_says": "In the box: cooker, grill rack, baking tray, LPG conversion kit, power cable with plug, manual, warranty card.",
+   "mode": "ai",
+   "seconds": 2.34,
+   "drafts": [
+    {
+     "text": "Yes, the box includes an LPG conversion kit, along with the grill rack, baking tray, power cable with plug, manual and warranty card.",
+     "confident": false
+    },
+    {
+     "text": "Yes, an LPG conversion kit is in the box, with the grill rack, baking tray, cable, manual and warranty card. Want me to check the order options for you?",
+     "confident": false
+    },
+    {
+     "text": "Yes, the LPG conversion kit is included in the box. Happy to help with anything else!",
+     "confident": false
+    }
+   ],
+   "send_button": false,
+   "price_ok": true,
+   "stock_ok": true
+  },
+  {
+   "id": "tt-q15",
+   "type": "comparison",
+   "question_en": "For home use, slicing jamon and cheese. What about the one for 3,836? Is there a big difference from the next model at 4,598?",
+   "seller_says": "The GORENJE R 506 E works for vegetables, fruit, meat, salo, cheese, sausage.",
+   "mode": "ai",
+   "seconds": 2.38,
+   "drafts": [
+    {
+     "text": "The GORENJE R 506 E works for vegetables, fruit, meat, salo, cheese and sausage. A colleague will confirm the difference from the 4,598 model.",
+     "confident": false
+    },
+    {
+     "text": "The GORENJE R 506 E slices vegetables, fruit, meat, salo, cheese, sausage. I'll ask a colleague to compare it with the 4,598 model and confirm for you.",
+     "confident": false
+    },
+    {
+     "text": "The GORENJE R 506 E handles meat, salo, cheese and sausage. A colleague will gladly confirm how it differs from the 4,598 one.",
+     "confident": false
+    }
+   ],
+   "send_button": false,
+   "price_ok": true,
+   "stock_ok": true
+  },
+  {
+   "id": "tt-q16",
+   "type": "warranty",
+   "question_en": "WHIRLPOOL WHK 26413 X6EA1 fridge. Hi, what's the warranty on the compressor?",
+   "seller_says": "1 year on the fridge plus 10 years on the inverter compressor.",
+   "mode": "ai",
+   "seconds": 5.67,
+   "drafts": [
+    {
+     "text": "Hi! The fridge has a 1 year warranty, and the inverter compressor has a 10 year warranty.",
+     "confident": true
+    },
+    {
+     "text": "Hello! You get 1 year on the fridge plus 10 years on the inverter compressor. Want me to check delivery to your city or the carrying price?",
+     "confident": true
+    },
+    {
+     "text": "Hi! 1 year on the fridge and 10 years on the inverter compressor. Happy to help with anything else!",
+     "confident": true
+    }
+   ],
+   "send_button": true,
+   "price_ok": true,
+   "stock_ok": true
+  },
+  {
+   "id": "tt-q17",
+   "type": "delivery",
+   "question_en": "What date can you deliver this? https://tt.ua/uk/beko-bbie123001xd",
+   "seller_says": "For Nov 19-20.",
+   "mode": "ai",
+   "seconds": 2.0,
+   "drafts": [
+    {
+     "text": "We can deliver it on Nov 19-20.",
+     "confident": true
+    },
+    {
+     "text": "Delivery is planned for Nov 19-20. Tell me your city and I will help you set up the order. The oven is in stock, last units.",
+     "confident": true
+    },
+    {
+     "text": "Happy to help! Delivery for Nov 19-20.",
+     "confident": true
+    }
+   ],
+   "send_button": true,
+   "price_ok": true,
+   "stock_ok": true
+  },
+  {
+   "id": "tt-q18",
+   "type": "spec",
+   "question_en": "TEFAL SW383D10 multi-maker. Does the grill have a drip tray for excess fat?",
+   "seller_says": "No.",
+   "mode": "ai",
+   "seconds": 1.95,
+   "drafts": [
+    {
+     "text": "No.",
+     "confident": true
+    },
+    {
+     "text": "No, this model does not have a drip tray for excess fat. I can show you other options in the shop if you like.",
+     "confident": true
+    },
+    {
+     "text": "Sorry, no, it does not have a drip tray. Happy to help you look at alternatives!",
+     "confident": true
+    }
+   ],
+   "send_button": true,
+   "price_ok": true,
+   "stock_ok": true
+  },
+  {
+   "id": "tt-q19",
+   "type": "spec",
+   "question_en": "Hi. What's the real noise level in dB? (asked about the WHIRLPOOL WHK 26403 XP6E fridge from the channel post)",
+   "seller_says": "WHIRLPOOL WHK 26403 XP6E: 35-37 dB.",
+   "mode": "ai",
+   "seconds": 2.21,
+   "drafts": [
+    {
+     "text": "The WHIRLPOOL WHK 26403 XP6E runs at 35-37 dB.",
+     "confident": true
+    },
+    {
+     "text": "The WHIRLPOOL WHK 26403 XP6E runs at 35-37 dB. It's in stock at 25 999 UAH, so I can help you order it if you like.",
+     "confident": true
+    },
+    {
+     "text": "Hi! It's quiet: 35-37 dB for the WHIRLPOOL WHK 26403 XP6E. Happy to help with anything else!",
+     "confident": true
+    }
+   ],
+   "send_button": true,
+   "price_ok": true,
+   "stock_ok": true
+  },
+  {
+   "id": "tt-q20",
+   "type": "availability",
+   "question_en": "Hi, is the TEFAL PUREGLISS Coppertinto & Black FV8064E0 iron in stock in Odesa?",
+   "seller_says": "I can reserve it for pickup tomorrow.",
+   "mode": "ai",
+   "seconds": 2.14,
+   "drafts": [
+    {
+     "text": "Yes, the TEFAL PUREGLISS FV8064E0 is in stock at 3 579 UAH. I can reserve it for pickup tomorrow.",
+     "confident": true
+    },
+    {
+     "text": "The iron is in stock at 3 579 UAH. I can reserve it for pickup tomorrow. Would you like me to do that for you?",
+     "confident": true
+    },
+    {
+     "text": "Yes, it's in stock! I can reserve it for pickup tomorrow if you like.",
+     "confident": true
+    }
+   ],
+   "send_button": true,
+   "price_ok": true,
+   "stock_ok": true
+  },
+  {
+   "id": "tt-q21",
+   "type": "availability",
+   "question_en": "Is the LIBERTON LAF-3217 multi-oven in stock in Cherkasy?",
+   "seller_says": "In Cherkasy for Saturday 21.11.",
+   "mode": "ai",
+   "seconds": 2.46,
+   "drafts": [
+    {
+     "text": "Yes, the LIBERTON LAF-3217 is in stock, last units. In Cherkasy for Saturday 21.11.",
+     "confident": true
+    },
+    {
+     "text": "Yes, it is in stock, last units, and in Cherkasy for Saturday 21.11. Pickup in Cherkasy is free. Shall I set one aside for you?",
+     "confident": true
+    },
+    {
+     "text": "Yes, in Cherkasy for Saturday 21.11. Only the last units are left, so we'd be glad to reserve one for you!",
+     "confident": true
+    }
+   ],
+   "send_button": true,
+   "price_ok": true,
+   "stock_ok": true
+  },
+  {
+   "id": "tt-q22",
+   "type": "spec",
+   "question_en": "Please check on the Elica LANE WH/A/52 hood: does this model have a non-return valve?",
+   "seller_says": "Non-return valve: yes.",
+   "mode": "ai",
+   "seconds": 2.02,
+   "drafts": [
+    {
+     "text": "Yes, the Elica LANE WH/A/52 hood has a non-return valve.",
+     "confident": true
+    },
+    {
+     "text": "Yes, this hood has a non-return valve. It is available to order at 11 637 UAH. Would you like me to tell you about delivery or payment options?",
+     "confident": true
+    },
+    {
+     "text": "Good news: yes, the Elica LANE WH/A/52 has a non-return valve. Happy to help with anything else!",
+     "confident": true
+    }
+   ],
+   "send_button": true,
+   "price_ok": true,
+   "stock_ok": true
+  },
+  {
+   "id": "tt-q24",
+   "type": "delivery",
+   "question_en": "I'd like to buy the built-in ELECTROLUX LNA7NE18S fridge and the ELECTROLUX EW6F3414UU washer. Roughly how much is door-to-door delivery to Uzhhorod?",
+   "seller_says": "The built-in ELECTROLUX LNA7NE18S can only go to a Nova Poshta branch, height limit 220 cm.",
+   "mode": "ai",
+   "seconds": 2.54,
+   "drafts": [
+    {
+     "text": "The ELECTROLUX LNA7NE18S fridge can only go to a Nova Poshta branch in Uzhhorod, height limit 220 cm. Door-to-door isn't possible. A colleague will confirm the price.",
+     "confident": false
+    },
+    {
+     "text": "The fridge ships only to a Nova Poshta branch (limit 220 cm), not to your door. You pay the carrier's price. A colleague will confirm the cost and the washer's options.",
+     "confident": false
+    },
+    {
+     "text": "The fridge can only go to a Nova Poshta branch in Uzhhorod, limit 220 cm. A colleague will confirm the washer and the cost.",
+     "confident": false
+    }
+   ],
+   "send_button": false,
+   "price_ok": true,
+   "stock_ok": true
+  },
+  {
+   "id": "tt-q26",
+   "type": "comparison",
+   "question_en": "[photo: WHIRLPOOL GOFL 629 S hob] Here are two with identical color and name, why different prices??",
+   "seller_says": "The only difference is the warranty.",
+   "mode": "ai",
+   "seconds": 2.73,
+   "drafts": [
+    {
+     "text": "Добрий день! Єдина різниця між ними – гарантія.",
+     "confident": true
+    },
+    {
+     "text": "Єдина різниця між ними – гарантія. Цей WHIRLPOOL GOFL 629 S коштує 13 836 грн. Підкажіть, який саме варіант вас цікавить?",
+     "confident": true
+    },
+    {
+     "text": "Дякуємо за питання! Різниця лише в гарантії, решта однакова.",
+     "confident": true
+    }
+   ],
+   "send_button": true,
+   "price_ok": true,
+   "stock_ok": true
+  },
+  {
+   "id": "tt-q27",
+   "type": "comparison",
+   "question_en": "Hi. I'm looking at the DREAME Bot L40 Ultra CE Black (RLD52SE-Bl) robot vacuum. It's 27,799 UAH on the site, but the white one is cheaper. Why the difference?",
+   "seller_says": "The white one has a 12-month store warranty, it's an EU-market supply.",
+   "mode": "ai",
+   "seconds": 10.41,
+   "drafts": [
+    {
+     "text": "The white one has a 12-month store warranty, as it's an EU-market supply. The black one is 27,799 UAH and in stock. I can't confirm the white one's price from my info.",
+     "confident": false
+    },
+    {
+     "text": "The white one is an EU-market supply with a 12-month store warranty. I can't see its price here, so a colleague will confirm it. Want me to check the white one for you?",
+     "confident": false
+    },
+    {
+     "text": "Good question! The white one is an EU-market supply with a 12-month store warranty. A colleague will confirm the price details for you.",
+     "confident": false
+    }
+   ],
+   "send_button": false,
+   "price_ok": true,
+   "stock_ok": true
+  },
+  {
+   "id": "tt-q28",
+   "type": "availability",
+   "question_en": "Looking at the site, it shows as out of stock?",
+   "seller_says": "https://tt.ua/uk/stiralno-sushilnaya-mashina-hisense-wd5i8043bwf is on the site and in stock.",
+   "mode": "ai",
+   "seconds": 2.55,
+   "drafts": [
+    {
+     "text": "The Hisense WD5I8043BWF is on the site and in stock: https://tt.ua/uk/stiralno-sushilnaya-mashina-hisense-wd5i8043bwf",
+     "confident": false
+    },
+    {
+     "text": "Good news, the Hisense WD5I8043BWF is on the site and in stock. Here is the link: https://tt.ua/uk/stiralno-sushilnaya-mashina-hisense-wd5i8043bwf Shall I help you order it?",
+     "confident": false
+    },
+    {
+     "text": "It is in stock and on the site, here is the link: https://tt.ua/uk/stiralno-sushilnaya-mashina-hisense-wd5i8043bwf",
+     "confident": false
+    }
+   ],
+   "send_button": false,
+   "price_ok": true,
+   "stock_ok": true
+  },
+  {
+   "id": "tt-q29",
+   "type": "availability",
+   "question_en": "Hi! When do you expect this model? https://tt.ua/uk/duhovoy-shkaf-gunter-hauer-eog-604 Thanks.",
+   "seller_says": "GUNTER & HAUER EOG 604 gas oven: we had them, but all sold out.",
+   "mode": "ai",
+   "seconds": 2.72,
+   "drafts": [
+    {
+     "text": "Hi! We had the GUNTER & HAUER EOG 604, but it is all sold out now. I can't give a restock date, a colleague will confirm if it is expected.",
+     "confident": false
+    },
+    {
+     "text": "Hi! The EOG 604 is sold out. A colleague can confirm if it will return. Want me to show you similar gas ovens we have in stock?",
+     "confident": false
+    },
+    {
+     "text": "Hi! Sorry, the EOG 604 is sold out. A colleague will confirm any restock. Happy to suggest an alternative!",
+     "confident": false
+    }
+   ],
+   "send_button": false,
+   "price_ok": true,
+   "stock_ok": true
+  },
+  {
+   "id": "tt-q30",
+   "type": "availability",
+   "question_en": "EDLER EDF102HPGB dryer. Is it in stock, and when could I pick it up if I order today?",
+   "seller_says": "In Dnipro by Saturday 28.11.",
+   "mode": "ai",
+   "seconds": 2.61,
+   "drafts": [
+    {
+     "text": "Yes, the EDLER EDF102HPGB is in stock at 18 200 UAH. In Dnipro by Saturday 28.11.",
+     "confident": true
+    },
+    {
+     "text": "It is in stock. In Dnipro by Saturday 28.11. Shall I help you place the order today so that the date holds?",
+     "confident": true
+    },
+    {
+     "text": "Good news, it is in stock! In Dnipro by Saturday 28.11. Happy to help you order.",
+     "confident": true
+    }
+   ],
+   "send_button": true,
+   "price_ok": true,
+   "stock_ok": true
+  }
+ ]
+}
