@@ -31,7 +31,7 @@ The glasses never made a fact up. Where the catalog had the answer (price, stock
 
 That is exactly the job of the seller on the floor: the glasses hand them the half that the shop data already knows in under 3 seconds, and they add the half only a person knows, with one sentence of voice ("say we deliver Thursday"), instead of typing the whole answer.
 
-Run 2 adds the shop's public rules. The send button doubles (2 to 4), and 12 of 30 drafts now carry a real rule, for example "Odesa has free pickup or courier to your entrance, from 3 days; carrying upstairs is 100 UAH per floor for this model". The rest still go to a person, and should: the site itself says a manager confirms exact dates per city, carrier size limits, and whether a promo price holds for a given number of payments. Those are the parts the seller adds with one sentence of voice.
+Run 2 adds the shop's public rules. The send button doubles (2 to 4), and 12 of 30 drafts now carry a real rule, for example "Odesa has free pickup or courier to your entrance, from 3 days. Courier price is on the product page. Need carrying upstairs? It's 100 UAH per floor for this model." (tt-q06, a washer-dryer). The rest still go to a person, and should: the site itself says a manager confirms exact dates per city, carrier size limits, and whether a promo price holds for a given number of payments. Those are the parts the seller adds with one sentence of voice.
 
 ## Honest limits
 
