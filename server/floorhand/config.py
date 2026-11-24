@@ -27,6 +27,8 @@ CATALOG_PATH = Path(os.environ.get("CATALOG_PATH", "./catalog/catalog.json"))
 POLICY_PATH = Path(os.environ.get("POLICY_PATH", str(CATALOG_PATH.parent / "shop_policy.md")))
 ALLOWED_ORIGINS = [o.strip() for o in os.environ.get("ALLOWED_ORIGINS", "http://localhost:5173").split(",") if o.strip()]
 WHISPER_MODEL = os.environ.get("WHISPER_MODEL", "small")
+# The demo shop talks English. Fixing the language stops Whisper guessing (it once heard Bulgarian) and saves time.
+WHISPER_LANGUAGE = os.environ.get("WHISPER_LANGUAGE", "en")
 
 
 def llm_enabled() -> bool:

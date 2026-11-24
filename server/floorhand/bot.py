@@ -123,7 +123,8 @@ class Bot:
         drafts, mode = make_drafts(t["text"], product, self.history(t["chat_id"], ticket_id), use_ai, instruction)
         return self.store.update_ticket(
             ticket_id, drafts=drafts, draft_mode=mode, status="waiting",
-            product=product.code if product else None, draft_seconds=round(time.time() - started, 2))
+            product=product.code if product else None, draft_seconds=round(time.time() - started, 2),
+            **({"voice_text": instruction} if instruction else {}))
 
     # outgoing
     def reply(self, ticket_id: int, text: str) -> dict | None:

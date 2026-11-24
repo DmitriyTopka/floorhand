@@ -18,7 +18,7 @@ def _get_model():
         return _model
 
 
-def transcribe_pcm16(pcm: bytes, language: str | None = None) -> str:
+def transcribe_pcm16(pcm: bytes, language: str | None = config.WHISPER_LANGUAGE or None) -> str:
     """PCM s16le, 16 kHz, mono, as the G2 microphone sends it."""
     if len(pcm) < 3200:  # under 0.1 s
         return ""

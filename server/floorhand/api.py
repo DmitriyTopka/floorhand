@@ -28,6 +28,19 @@ def _start_bot() -> None:
         bot.start()
     else:
         print("TELEGRAM_BOT_TOKEN not set: bot polling is off")
+    if not config.DEV_FAKE_TELEGRAM:
+        # load the speech model now, so the first "hold to edit" does not wait for a download
+        import threading
+
+        def _warm() -> None:
+            try:
+                from .stt import _get_model
+                _get_model()
+                print("speech model ready", flush=True)
+            except Exception as exc:  # STT is optional: no model, no voice edit, everything else works
+                print(f"speech model not loaded: {exc!r}", flush=True)
+
+        threading.Thread(target=_warm, daemon=True).start()
 
 
 def _visible(uid: str) -> list[dict]:
@@ -127,7 +140,9 @@ async def voice(ticket_id: int, request: Request, x_device_key: str | None = Hea
         if len(pcm) > MAX_VOICE_BYTES:
             raise HTTPException(413, "voice note too long (15 s max)")
     from .stt import transcribe_pcm16
+    started = time.time()
     said = await run_in_threadpool(transcribe_pcm16, bytes(pcm))
+    print(f"voice ticket={t['id']} audio={len(pcm) / 32000:.1f}s stt={time.time() - started:.2f}s", flush=True)
     if not said:
         return {"ok": False, "said": ""}
     updated = await run_in_threadpool(bot.draft, t["id"], said)

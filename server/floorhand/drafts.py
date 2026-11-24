@@ -49,7 +49,10 @@ Rules:
 - If the facts do not answer the question, say a colleague will confirm, and set confident to false.
 - Each reply at most 160 characters, plain text, no emoji, the customer's language.
 - Reply 1: direct answer. Reply 2: answer plus a helpful next step. Reply 3: short and warm.
-- confident is true only when the reply is fully backed by the facts."""
+- confident is true only when the reply is fully backed by the facts.
+- If THE SHOP ASSISTANT SAID is present, those words come from a person who works in this shop and are facts
+  (a delivery day, a promise, a correction). Put them into all three replies in the customer's language, instead of
+  "a colleague will confirm" for that point. They count as backed for confident. Do not add anything beyond them."""
 
 
 _policy_cache: dict[str, tuple[str, set[int]]] = {}
@@ -137,7 +140,7 @@ def llm_drafts(question: str, product: Product | None, history: list[str], instr
     rules = policy()[0] or "No shop policy loaded."
     user = f"SHOP: {config.SHOP_NAME}\nSHOP POLICY:\n{rules}\n\nPRODUCT FACTS:\n{facts}\n\nCONVERSATION:\n{convo}\n\nCUSTOMER'S LAST MESSAGE:\n{question}"
     if instruction:
-        user += f"\n\nTHE ASSISTANT SAID, apply this to all three replies: {instruction}"
+        user += f"\n\nTHE SHOP ASSISTANT SAID (spoken, speech to text): {instruction}"
     resp = client.messages.create(
         model=config.CLAUDE_MODEL,
         max_tokens=1200,

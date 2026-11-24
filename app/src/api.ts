@@ -19,8 +19,15 @@ export type Card =
 // The device key travels in a header, never in the URL, so it stays out of logs.
 const auth = (uid: string) => ({ 'X-Device-Key': uid })
 
+// Every request gives up after a while: a hung connection must never freeze the screen or the polling loop.
+function within(ms: number): AbortSignal {
+  const c = new AbortController()
+  setTimeout(() => c.abort(), ms)
+  return c.signal
+}
+
 export async function getCard(uid: string): Promise<Card> {
-  const r = await fetch(`${BASE}/api/card`, { headers: auth(uid) })
+  const r = await fetch(`${BASE}/api/card`, { headers: auth(uid), signal: within(8000) })
   if (!r.ok) throw new Error(`card ${r.status}`)
   return r.json()
 }
@@ -30,6 +37,7 @@ async function post(uid: string, path: string, body: unknown) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', ...auth(uid) },
     body: JSON.stringify(body),
+    signal: within(10000),
   })
   if (!r.ok) throw new Error(`${path} ${r.status}`)
   return r.json()
@@ -45,6 +53,7 @@ export async function voice(uid: string, ticketId: number, pcm: Uint8Array): Pro
     method: 'POST',
     headers: { 'Content-Type': 'application/octet-stream', ...auth(uid) },
     body: new Blob([pcm as BlobPart]),
+    signal: within(40000),
   })
   if (!r.ok) throw new Error(`voice ${r.status}`)
   return r.json()
