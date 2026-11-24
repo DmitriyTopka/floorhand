@@ -15,7 +15,11 @@ import re
 from . import config
 from .catalog import Product
 
-_NUM = re.compile(r"(\d[\d\s.,]{2,})\s*(?:uah|грн|hryvnia|₴)", re.IGNORECASE)
+# A price is a whole number, optionally grouped in thousands ("31 499", "31,499"),
+# optionally with kopecks, followed by the currency. It may not start inside a
+# word, so "RB38C679ES9. 31 499 UAH" reads as 31 499, not 931 499.
+_NUM = re.compile(r"(?<![\w.,])(\d{1,3}(?:[ \u00a0\u202f,.]\d{3})+|\d+)(?:[.,]\d{1,2})?\s*(?:uah|грн|hryvnia|₴)",
+                  re.IGNORECASE)
 
 _SCHEMA = {
     "type": "object",
@@ -56,7 +60,6 @@ def _price_ok(text: str, product: Product | None) -> bool:
         return False
     want = int(round(product.price_uah))
     for raw in found:
-        raw = re.sub(r"[.,]\d{2}\s*$", "", raw.strip())
         digits = re.sub(r"\D", "", raw)
         if digits and int(digits) != want:
             return False

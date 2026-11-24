@@ -1,0 +1,40 @@
+# Eval: 30 real questions a shop bot could not answer
+
+Run on 24.11.2026 on the demo server, same code path as live (`make_drafts` in `server/floorhand/drafts.py`), model `claude-sonnet-5-5`, no conversation history, English versions of the questions.
+Reproduce: `server/.venv/bin/python eval/run_eval.py` (or `--dry-run` for template drafts, no API calls). Raw output: `eval/results.json`.
+
+## Where the questions come from
+
+Each one is a real customer message from TechnoTochka (tt.ua, an appliance shop in Ukraine), 03-20.11.2026, where the existing shop bot gave up and called a human manager. Names and phone numbers removed, each paired with the answer the manager actually wrote. So this set is the hard tail on purpose: the easy questions never reached a person.
+
+Mix: 11 availability, 6 specs, 5 delivery, 4 price or installments, 3 comparison, 1 warranty.
+
+## Numbers
+
+| What | Result |
+|---|---|
+| Product found in the 50-item catalog | 23 / 30 (the other 7 say "this one" with a photo or an earlier link we do not have) |
+| Drafts with a price that is not the catalog price | 0 / 90 |
+| Drafts that contradict the catalog stock status | 0 / 90 |
+| Questions with a send button on the glasses (Claude fully sure) | 2 / 30 |
+| Questions handed to the human with a partial answer | 28 / 30 |
+| Of the 23 matched: drafts already carry price or stock | 20 / 23 |
+| Time to three drafts, median / max | 2.6 s / 6.6 s |
+| Claude usage for all 30 | 22 485 input + 5 531 output tokens, about 0.15 USD |
+
+For comparison, on these 30 the manager's answer came 5.4 min after the customer's message (median). Across all hand-offs that week the median wait was 102 min (`eval/PAIN_STATS.md`); the 30 here are the ones where a manager did answer in the chat, so they skew fast.
+
+## What it means
+
+The glasses never made a fact up. Where the catalog had the answer (price, stock, a spec) the draft used it; where the answer lives in a person's head (delivery date to a city, installment rules, warranty split, why two listings of one hob differ) every draft said a colleague will confirm, and the glasses showed no send button.
+
+That is exactly the job of the seller on the floor: the glasses hand them the half that the shop data already knows in under 3 seconds, and they add the half only a person knows, with one sentence of voice ("say we deliver Thursday"), instead of typing the whole answer.
+
+What would move 28 hand-offs toward a tap: a short shop-policy sheet next to the catalog (delivery prices and limits, installment rules, warranty types). The manager answers show it is mostly the same few facts: 450 UAH city delivery, 170 cm limit at freight branches, red-tag price only for full payment or 3 months at PrivatBank or monobank, 12-month store warranty for EU-market stock.
+
+## Honest limits
+
+- Catalog prices were fetched 23.11, manager answers are from 03-20.11, so some prices and stock moved in between. Drafts are checked against the catalog, not against the old answer.
+- Checks for price and stock are automatic (regex over the drafts); "would a manager send it" was not scored by a second model.
+- One draft (tt-q26) answered in Ukrainian to an English question, because the product name in the catalog is Ukrainian.
+- While building this eval we found that the price guard misread "RB38C679ES9. 31 499 UAH" as 931 499 and took the send button away from a correct draft. Fixed before the run, test added (`test_price_check_does_not_glue_model_digits_to_price`).

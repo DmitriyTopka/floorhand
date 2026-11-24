@@ -175,3 +175,16 @@ def test_global_rate_limit_on_new_codes(tmp_path):
         s.pair_code_for(f"device-key-number-{i:04d}-abcdef", f"10.0.0.{i}")
     with pytest.raises(Store.PairingBusy):
         s.pair_code_for("device-key-number-9999-abcdef", "10.0.0.9")
+
+
+def test_price_check_does_not_glue_model_digits_to_price():
+    from floorhand.drafts import _price_ok
+    fridge = Product(code="198793", name="Холодильник SAMSUNG RB38C679ES9", name_en="Refrigerator SAMSUNG RB38C679ES9",
+                     price_uah=31499, stock_status="In stock", url="https://tt.ua/uk/holodilnik-samsung-rb38c679es9")
+    assert _price_ok("Yes, we have the Refrigerator SAMSUNG RB38C679ES9. 31 499 UAH.", fridge)
+    assert _price_ok("RB38C679ES9: 31,499.00 UAH", fridge)
+    assert _price_ok("It is 31499 грн", fridge)
+    assert _price_ok("It is 31 499 ₴", fridge)
+    assert not _price_ok("RB38C679ES9. 29 999 UAH", fridge)
+    assert not _price_ok("Now 31 999 UAH, was 33 704 UAH", fridge)
+    assert not _price_ok("only 999 UAH", fridge)
