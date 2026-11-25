@@ -20,6 +20,9 @@ TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
 DRAFTS = os.environ.get("DRAFTS", "llm")  # llm | template
 CLAUDE_MODEL = os.environ.get("CLAUDE_MODEL", "claude-sonnet-5-5")
+# Spend guard for the public demo: past these, drafts fall back to catalog templates.
+LLM_PER_CHAT_HOUR = int(os.environ.get("LLM_PER_CHAT_HOUR", "30"))
+LLM_DAILY_CALLS = int(os.environ.get("LLM_DAILY_CALLS", "300"))
 SHOP_NAME = os.environ.get("SHOP_NAME", "TechnoTochka demo shop")
 DATA_DIR = Path(os.environ.get("DATA_DIR", "./data"))
 CATALOG_PATH = Path(os.environ.get("CATALOG_PATH", "./catalog/catalog.json"))

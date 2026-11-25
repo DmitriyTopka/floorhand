@@ -11,6 +11,8 @@ Safety rules applied to every draft, whatever wrote it:
 """
 import json
 import re
+import threading
+import time
 import unicodedata
 
 from . import config
@@ -185,9 +187,38 @@ def llm_drafts(question: str, product: Product | None, history: list[str], instr
     return guard(data["drafts"], product)
 
 
+_BUDGET_LOCK = threading.Lock()
+_per_key: dict = {}
+_per_day: dict = {}
+
+
+def reset_budget() -> None:
+    with _BUDGET_LOCK:
+        _per_key.clear()
+        _per_day.clear()
+
+
+def _budget_ok(key) -> bool:
+    """One Claude call allowed? Caps calls per chat per hour and per server per day."""
+    now = time.time()
+    day = time.strftime("%Y-%m-%d", time.gmtime(now))
+    with _BUDGET_LOCK:
+        if _per_day.get(day, 0) >= config.LLM_DAILY_CALLS:
+            return False
+        recent = [t for t in _per_key.get(key, []) if now - t < 3600]
+        if key is not None and len(recent) >= config.LLM_PER_CHAT_HOUR:
+            _per_key[key] = recent
+            return False
+        _per_key[key] = recent + [now]
+        if day not in _per_day:
+            _per_day.clear()  # keep only today's count
+        _per_day[day] = _per_day.get(day, 0) + 1
+        return True
+
+
 def make_drafts(question: str, product: Product | None, history: list[str], use_ai: bool,
-                instruction: str | None = None) -> tuple[list[dict], str]:
-    if use_ai and config.llm_enabled():
+                instruction: str | None = None, key=None) -> tuple[list[dict], str]:
+    if use_ai and config.llm_enabled() and _budget_ok(key):
         try:
             return llm_drafts(question, product, history, instruction), "ai"
         except Exception as exc:  # network, quota, bad JSON: fall back, never block the shop

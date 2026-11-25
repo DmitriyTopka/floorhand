@@ -2,6 +2,8 @@
 
 A shop assistant answers the shop's Telegram customers without taking out the phone and without turning away from the customer in front of them. At a real appliance store we measured the cost of not doing that: in one week 37% of its Telegram chats ended with the bot calling a human, and those customers then waited 102 minutes for a first reply (median). Floorhand puts the waiting question on Even Realities G2 glasses with a reply built from the shop's own catalog, price and stock included. One touch on the glasses or the R1 ring sends it. If the catalog does not back the answer, there is no send button: the seller says one sentence ("say we deliver Thursday") and the reply is rewritten.
 
+On 30 real questions the shop's bot gave up on, Floorhand invented no price in 180 drafts, and 16 of 30 replies were ready to send after at most one spoken sentence from the seller ([eval](eval/RESULTS.md)).
+
 Built for **Heads Up: Even Realities Hackathon** (DoraHacks, 23-29 Nov 2026). Tracks: **01 Messaging & News (Telegram)** and **04 AI Assistants (Claude)**, joined in one flow: a Telegram question goes in, Claude drafts from the catalog, the reply goes back to Telegram.
 
 Demo video: *(link added on submission day)*
@@ -76,6 +78,7 @@ Voice edit, checked live on 24 Nov with the simulator and a real microphone: a 6
 - **No invented prices.** Every UAH amount in a draft must be the catalog price, the crossed-out price (only after "was" or "old"), or an amount from the shop policy next to its own wording. Anything else takes the send button away. Tests: `server/tests/test_core.py`.
 - **Customer text cannot pose as staff.** Customer messages reach Claude only as JSON string values; the seller's spoken words go into the system prompt, and only the voice endpoint, behind a paired device key, can put them there.
 - **Keys stay on the server.** The glasses app holds no Telegram token and no Claude key. Glasses authenticate with a random 128-bit device key, paired through a 6-digit code that works for 10 minutes and is rate limited.
+- **Spend guard.** Claude calls are capped per customer chat (30 an hour) and per server (300 a day); past the cap, drafts come from catalog templates and the demo keeps working.
 - **Voice stays with the shop.** Speech is transcribed on our own server (faster-whisper), audio is not stored and not sent to third parties.
 - More than ten rounds of automated security review during the week, each finding fixed or reasoned about: [`SECURITY_NOTES.md`](SECURITY_NOTES.md).
 

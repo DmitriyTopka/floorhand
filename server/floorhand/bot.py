@@ -126,7 +126,8 @@ class Bot:
                 product = None  # they asked about something else we don't have; don't answer for the old item
         use_ai = self.store.customer(t["chat_id"]).get("consent") == "ai"
         started = time.time()
-        drafts, mode = make_drafts(t["text"], product, self.history(t["chat_id"], ticket_id), use_ai, instruction)
+        drafts, mode = make_drafts(t["text"], product, self.history(t["chat_id"], ticket_id), use_ai, instruction,
+                                   key=t["chat_id"])
         return self.store.update_ticket(
             ticket_id, drafts=drafts, draft_mode=mode, status="waiting",
             product=product.code if product else None, draft_seconds=round(time.time() - started, 2),

@@ -263,3 +263,19 @@ def test_question_asked_before_consent_is_answered_after_it(tmp_path, monkeypatc
     texts = [m[1]["text"] for m in b.sent if m[1].get("chat_id") == 9]
     assert "Ask about any product" not in texts[-1]       # don't ask again for a question we already have
     assert s.state["tickets"][0]["product"] == "111111"
+
+
+def test_claude_budget_per_chat_and_per_day(monkeypatch):
+    from floorhand import drafts
+    calls = []
+    monkeypatch.setattr(config, "llm_enabled", lambda: True)
+    monkeypatch.setattr(drafts, "llm_drafts", lambda *a, **k: calls.append(1) or [{"text": "ok", "confident": True}])
+    monkeypatch.setattr(config, "LLM_PER_CHAT_HOUR", 2)
+    monkeypatch.setattr(config, "LLM_DAILY_CALLS", 3)
+    drafts.reset_budget()
+    modes = [drafts.make_drafts("fridge?", FRIDGE, [], True, key=1)[1] for _ in range(3)]
+    assert modes == ["ai", "ai", "template"]              # third call from the same chat in an hour
+    assert drafts.make_drafts("fridge?", FRIDGE, [], True, key=2)[1] == "ai"
+    assert drafts.make_drafts("fridge?", FRIDGE, [], True, key=3)[1] == "template"   # day cap reached
+    assert len(calls) == 3
+    drafts.reset_budget()
