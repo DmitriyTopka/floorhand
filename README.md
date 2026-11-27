@@ -6,7 +6,7 @@ On 30 real questions the shop's bot gave up on, Floorhand invented no price in 1
 
 Built for **Heads Up: Even Realities Hackathon** (DoraHacks, 23-29 Nov 2026). Tracks: **01 Messaging & News (Telegram)** and **04 AI Assistants (Claude)**, joined in one flow: a Telegram question goes in, Claude drafts from the catalog, the reply goes back to Telegram.
 
-Demo video: *(link added on submission day)*
+Demo video (2:41): https://youtu.be/KW3w1rSqhEk
 
 ![Card on the glasses: question, catalog reply, tap to send](docs/evidence/2411_voice_edit_monday.png)
 
